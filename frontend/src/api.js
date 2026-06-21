@@ -1,5 +1,5 @@
 export async function api(path, options = {}) {
-  const API_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
+  const API_URL = import.meta.env.VITE_API_URL || "https://sevasetu-backend-r3yb.onrender.com";
   const token =
     localStorage.getItem("sevasetu_token") ||
     localStorage.getItem("sevasetu_auth_token");
