@@ -1,0 +1,607 @@
+.profileProPage {
+  min-height: 100vh;
+  padding: 24px 30px 42px;
+  background:
+    radial-gradient(circle at 8% 7%, rgba(249,115,22,0.12), transparent 28%),
+    radial-gradient(circle at 92% 8%, rgba(21,128,61,0.10), transparent 30%),
+    linear-gradient(180deg, #f4fbff 0%, #ffffff 45%, #f7fbff 100%);
+  color: #10294c;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.profileHeroPro {
+  min-height: 240px;
+  padding: 34px;
+  border-radius: 32px;
+  border: 1px solid #dbeafe;
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 26px 70px rgba(15,23,42,0.09);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 230px;
+  gap: 26px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.profileHeroPro::after {
+  content: "";
+  position: absolute;
+  right: -120px;
+  bottom: -140px;
+  width: 380px;
+  height: 380px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(249,115,22,0.18), rgba(21,128,61,0.13));
+}
+
+.profileHeroPro > div,
+.profileHeroPro aside {
+  position: relative;
+  z-index: 2;
+}
+
+.profileHeroPro span {
+  width: fit-content;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #f97316;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.profileHeroPro h1 {
+  margin: 18px 0 10px;
+  font-size: clamp(42px, 4.5vw, 64px);
+  line-height: 1.03;
+  letter-spacing: -0.06em;
+  font-weight: 950;
+  color: #10294c;
+}
+
+.profileHeroPro p {
+  max-width: 780px;
+  margin: 0;
+  color: #607089;
+  font-size: 16px;
+  line-height: 1.65;
+  font-weight: 750;
+}
+
+.profileHeroPro aside {
+  min-height: 170px;
+  padding: 22px;
+  border-radius: 28px;
+  border: 1px solid #e4edf7;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.profileLogoMark {
+  width: 90px;
+  height: 70px;
+  background: url("/images/sevasetu_official_logo.png") center / contain no-repeat;
+}
+
+.profileHeroPro aside b {
+  color: #15803d;
+  font-size: 34px;
+  font-weight: 950;
+}
+
+.profileHeroPro aside small {
+  color: #64748b;
+  font-weight: 850;
+}
+
+.profileGridPro {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 20px;
+}
+
+.profileFormCard {
+  padding: 24px;
+  border: 1px solid #dbeafe;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(15,23,42,0.075);
+}
+
+.profileFormCard.wide {
+  grid-column: 1 / 2;
+}
+
+.profileFormCard h2,
+.profileSummaryCard h2 {
+  margin: 0 0 18px;
+  color: #10294c;
+  font-size: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.profileFormCard h2 svg,
+.profileSummaryCard h2 svg {
+  color: #f97316;
+}
+
+.profileFormGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.profileFormGrid label {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.profileFormGrid input,
+.profileFormGrid select {
+  width: 100%;
+  height: 48px;
+  margin-top: 7px;
+  padding: 0 13px;
+  border: 1px solid #dbeafe;
+  border-radius: 15px;
+  outline: none;
+  background: #f8fbff;
+  color: #10294c;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.profileFormGrid input:focus,
+.profileFormGrid select:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 4px rgba(249,115,22,0.10);
+}
+
+.profileFlags {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.profileFlags button,
+.docCheckGrid button {
+  min-height: 40px;
+  padding: 0 13px;
+  border-radius: 999px;
+  border: 1px solid #dbeafe;
+  background: #f8fbff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.profileFlags button.active,
+.docCheckGrid button.active {
+  background: #ecfdf5;
+  color: #15803d;
+  border-color: #bbf7d0;
+}
+
+.docCheckGrid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.docCheckGrid button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.profileSummaryCard {
+  grid-column: 2 / 3;
+  grid-row: 1 / span 3;
+  padding: 24px;
+  border: 1px solid #dbeafe;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 48px rgba(15,23,42,0.075);
+  height: fit-content;
+  position: sticky;
+  top: 22px;
+}
+
+.profileSummaryCard ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #334155;
+  line-height: 1.9;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.profileSummaryCard p {
+  margin: 18px 0;
+  color: #64748b;
+  line-height: 1.6;
+  font-weight: 700;
+}
+
+.profileSummaryCard > button {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.profileTrustNote {
+  margin-top: 14px;
+  padding: 13px;
+  border-radius: 16px;
+  background: #ecfdf5;
+  color: #15803d;
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  font-size: 12px;
+  font-weight: 850;
+  line-height: 1.45;
+}
+
+@media (max-width: 1120px) {
+  .profileGridPro,
+  .profileHeroPro {
+    grid-template-columns: 1fr;
+  }
+
+  .profileFormCard.wide,
+  .profileSummaryCard {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .profileSummaryCard {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 680px) {
+  .profileProPage {
+    padding: 16px;
+  }
+
+  .profileHeroPro,
+  .profileFormCard,
+  .profileSummaryCard {
+    border-radius: 24px;
+    padding: 22px;
+  }
+
+  .profileFormGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== COMPACT PROFILE HEADER + DOCUMENT UPLOAD ===== */
+.compactProfileHero {
+  min-height: 175px !important;
+  padding: 26px 30px !important;
+}
+
+.compactProfileHero h1 {
+  font-size: clamp(34px, 3.2vw, 48px) !important;
+  margin: 14px 0 8px !important;
+}
+
+.compactProfileHero p {
+  font-size: 14px !important;
+  max-width: 650px !important;
+}
+
+.compactProfileHero aside {
+  min-height: 128px !important;
+  padding: 16px !important;
+}
+
+.compactProfileHero .profileLogoMark {
+  width: 66px !important;
+  height: 50px !important;
+}
+
+.compactProfileHero aside b {
+  font-size: 28px !important;
+}
+
+.uploadDropBox {
+  min-height: 160px;
+  border: 2px dashed #bfdbfe;
+  border-radius: 24px;
+  background:
+    linear-gradient(135deg, rgba(249,115,22,0.06), rgba(21,128,61,0.06)),
+    #f8fbff;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 24px;
+  cursor: pointer;
+  color: #10294c;
+  transition: 0.22s ease;
+}
+
+.uploadDropBox:hover {
+  border-color: #f97316;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 34px rgba(15,23,42,0.08);
+}
+
+.uploadDropBox input {
+  display: none;
+}
+
+.uploadDropBox svg {
+  color: #f97316;
+}
+
+.uploadDropBox b {
+  display: block;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 950;
+}
+
+.uploadDropBox span {
+  display: block;
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.uploadedDocList {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.uploadedDocList article {
+  padding: 12px;
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 28px 1fr 40px;
+  gap: 10px;
+  align-items: center;
+}
+
+.uploadedDocList article > svg {
+  color: #15803d;
+}
+
+.uploadedDocList b {
+  display: block;
+  color: #10294c;
+  font-size: 13px;
+  font-weight: 950;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.uploadedDocList span {
+  display: block;
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.uploadedDocList button {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 12px;
+  background: #fff1f2;
+  color: #e11d48;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.uploadedDocList button svg {
+  stroke: #e11d48;
+}
+
+/* ===== DOCUMENT-WISE UPLOAD UI ===== */
+.docInstructionText {
+  margin: -4px 0 16px;
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.docUploadGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.docUploadItem {
+  padding: 16px;
+  border: 1px solid #dbeafe;
+  border-radius: 22px;
+  background: #f8fbff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.docUploadItem.active {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+
+.docUploadItem.mandatory {
+  border-color: rgba(249,115,22,0.45);
+}
+
+.docUploadTop {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.docUploadTop > span {
+  width: 38px;
+  height: 38px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: #ffffff;
+}
+
+.docUploadTop b {
+  display: block;
+  color: #10294c;
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.docUploadTop small {
+  display: inline-flex;
+  margin-top: 4px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #f97316;
+  font-size: 10px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.docUploadItem:not(.mandatory) .docUploadTop small {
+  color: #64748b;
+}
+
+.docUploadItem p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.uploadedMiniInfo {
+  padding: 10px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #dbeafe;
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 8px;
+  align-items: center;
+}
+
+.uploadedMiniInfo svg {
+  color: #15803d;
+}
+
+.uploadedMiniInfo b {
+  display: block;
+  color: #10294c;
+  font-size: 12px;
+  font-weight: 950;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.uploadedMiniInfo small {
+  display: block;
+  margin-top: 3px;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.docUploadActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.docUploadActions button,
+.docUploadActions label,
+.removeDocUploadBtn {
+  min-height: 38px;
+  border: none;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #10294c;
+  font-size: 12px;
+  font-weight: 950;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  border: 1px solid #dbeafe;
+}
+
+.docUploadActions .selectedDocBtn {
+  background: #ecfdf5;
+  color: #15803d;
+  border-color: #bbf7d0;
+}
+
+.docUploadActions label {
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: #ffffff;
+  border: none;
+}
+
+.docUploadActions label svg {
+  stroke: #ffffff;
+}
+
+.docUploadActions input {
+  display: none;
+}
+
+.removeDocUploadBtn {
+  background: #fff1f2;
+  color: #e11d48;
+  border-color: #fecdd3;
+}
+
+.removeDocUploadBtn svg {
+  stroke: #e11d48;
+}
+
+@media (max-width: 760px) {
+  .docUploadGrid {
+    grid-template-columns: 1fr;
+  }
+}

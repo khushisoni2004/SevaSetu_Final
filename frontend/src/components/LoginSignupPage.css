@@ -1,0 +1,329 @@
+/* ===== CLEAN LOGIN/SIGNUP PAGE: SIMPLE TRICOLOR WAVE ONLY ===== */
+
+.authPageSeparate {
+  min-height: 100vh;
+  width: 100%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 34px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* simple animated tricolor wave background */
+.authPageSeparate::before {
+  content: "";
+  position: absolute;
+  inset: -22%;
+  z-index: 0;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,153,51,0.48) 0%,
+      rgba(255,153,51,0.30) 30%,
+      rgba(255,255,255,0.95) 43%,
+      rgba(255,255,255,0.98) 57%,
+      rgba(19,136,8,0.30) 70%,
+      rgba(19,136,8,0.48) 100%
+    );
+  transform: rotate(-8deg) scale(1.25);
+  animation: simpleTricolorWave 6s ease-in-out infinite alternate;
+}
+
+/* no extra design */
+.authPageSeparate::after,
+.authFormSideNew::before,
+.authFormSideNew::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* hide left quote section completely */
+.authVisualSide,
+.authVisualQuote,
+.backHomeBtn {
+  display: none !important;
+}
+
+/* form center */
+.authFormSideNew {
+  width: 100% !important;
+  min-height: auto !important;
+  padding: 0 !important;
+  background: transparent !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+
+/* form card */
+.authFormCardNew {
+  width: min(100%, 560px) !important;
+  margin: 0 auto !important;
+  background: rgba(255,255,255,0.97) !important;
+  border: 1px solid rgba(255,255,255,0.95) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 26px 80px rgba(15,23,42,0.16) !important;
+  padding: 34px 52px 28px !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+@keyframes simpleTricolorWave {
+  0% {
+    transform: rotate(-8deg) scale(1.25) translateX(-5%) translateY(0);
+  }
+  50% {
+    transform: rotate(-6deg) scale(1.28) translateX(3%) translateY(-20px);
+  }
+  100% {
+    transform: rotate(-9deg) scale(1.25) translateX(7%) translateY(16px);
+  }
+}
+
+/* form content */
+.authTopLang {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.authTopLang label {
+  height: 42px;
+  border: 1px solid #dde5ef;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 13px;
+  background: #ffffff;
+}
+
+.authTopLang select {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-weight: 750;
+}
+
+.formBrand {
+  text-align: center;
+}
+
+.formBrand h2 {
+  margin: 0;
+  font-size: 45px;
+  line-height: 1;
+  font-weight: 950;
+}
+
+.seva {
+  color: #f97316;
+}
+
+.setu {
+  color: #15803d;
+}
+
+.formBrand p {
+  margin: 10px 0 0;
+  color: #343b4a;
+  font-size: 18px;
+}
+
+.brandUnderline {
+  width: 76px;
+  height: 3px;
+  margin: 18px auto 24px;
+  display: flex;
+}
+
+.brandUnderline span {
+  flex: 1;
+  background: #f97316;
+}
+
+.brandUnderline b {
+  flex: 1;
+  background: #15803d;
+}
+
+.formTabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid #e6edf5;
+  margin-bottom: 24px;
+}
+
+.formTabs button {
+  border: none;
+  background: transparent;
+  padding: 0 0 15px;
+  color: #172033;
+  font-size: 18px;
+  font-weight: 800;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+
+.formTabs button.active {
+  color: #f97316;
+  border-bottom-color: #f97316;
+}
+
+.fieldLabel {
+  display: block;
+  margin: 14px 0 8px;
+  color: #172033;
+  font-size: 15px;
+  font-weight: 750;
+}
+
+.inputWrap {
+  height: 54px;
+  border: 1px solid #d9e2ec;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  background: #ffffff;
+}
+
+.inputWrap svg {
+  color: #7c8796;
+}
+
+.inputWrap input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+  color: #172033;
+}
+
+.eyeBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.formOptions {
+  margin: 15px 0 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.formOptions label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  color: #4c5668;
+  font-size: 14px;
+}
+
+.formOptions button {
+  border: none;
+  background: transparent;
+  color: #0b58d0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mainSubmit {
+  width: 100%;
+  height: 56px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(90deg, #f97316, #ea580c);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 14px 28px rgba(249,115,22,0.22);
+}
+
+.orLine {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 16px;
+  align-items: center;
+  margin: 24px 0;
+}
+
+.orLine span {
+  height: 1px;
+  background: #e6edf5;
+}
+
+.orLine b {
+  color: #172033;
+  font-weight: 500;
+}
+
+.switchText {
+  text-align: center;
+  color: #6b7280;
+}
+
+.switchText button {
+  border: none;
+  background: transparent;
+  color: #0b58d0;
+  font-weight: 800;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.trustBoxes {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.trustBoxes article {
+  min-height: 64px;
+  border: 1px solid #edf2f7;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.trustBoxes svg {
+  color: #15803d;
+}
+
+.trustBoxes b {
+  color: #172033;
+  font-size: 13px;
+}
+
+@media (max-width: 650px) {
+  .authPageSeparate {
+    padding: 18px !important;
+  }
+
+  .authPageSeparate::before {
+    inset: -35%;
+    transform: rotate(-10deg) scale(1.45);
+  }
+
+  .authFormCardNew {
+    padding: 28px 22px !important;
+  }
+
+  .trustBoxes {
+    grid-template-columns: 1fr;
+  }
+}

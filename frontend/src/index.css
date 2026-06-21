@@ -1,0 +1,259 @@
+
+/* ===== GLOBAL FINAL SIDEBAR BRAND FORCE ===== */
+.sidebar .brand,
+.appSidebar .brand,
+.sideBar .brand,
+.sidebarBrand,
+.brand {
+  overflow: visible !important;
+}
+
+.sidebar .brand p,
+.sidebar .brand small,
+.appSidebar .brand p,
+.appSidebar .brand small,
+.sideBar .brand p,
+.sideBar .brand small,
+.sidebarBrand p,
+.sidebarBrand small {
+  display: none !important;
+  content: none !important;
+}
+
+.sidebar .brandMark,
+.appSidebar .brandMark,
+.sideBar .brandMark {
+  width: 72px !important;
+  height: 58px !important;
+  background: url("/images/sevasetu_official_logo.png") center center / contain no-repeat !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.sidebar .brandMark span,
+.sidebar .brandMark span::after,
+.appSidebar .brandMark span,
+.appSidebar .brandMark span::after,
+.sideBar .brandMark span,
+.sideBar .brandMark span::after {
+  display: none !important;
+  content: none !important;
+}
+
+.sidebar .brandOfficialLogo,
+.appSidebar .brandOfficialLogo,
+.sideBar .brandOfficialLogo {
+  width: 72px !important;
+  height: 58px !important;
+  background: url("/images/sevasetu_official_logo.png") center center / contain no-repeat !important;
+  flex-shrink: 0 !important;
+}
+
+.sidebar .brandTop,
+.appSidebar .brandTop,
+.sideBar .brandTop {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.sidebar .brandText h2,
+.appSidebar .brandText h2,
+.sideBar .brandText h2,
+.sidebar .brand h2,
+.appSidebar .brand h2,
+.sideBar .brand h2 {
+  margin: 0 !important;
+  font-size: 34px !important;
+  line-height: 1 !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.045em !important;
+}
+
+.sidebar .brandText h2 b,
+.appSidebar .brandText h2 b,
+.sideBar .brandText h2 b,
+.sidebar .brand h2 b,
+.appSidebar .brand h2 b,
+.sideBar .brand h2 b {
+  color: #f97316 !important;
+}
+
+.sidebar .brandText h2 strong,
+.appSidebar .brandText h2 strong,
+.sideBar .brandText h2 strong,
+.sidebar .brand h2 strong,
+.appSidebar .brand h2 strong,
+.sideBar .brand h2 strong {
+  color: #15803d !important;
+}
+
+/* ===== FINAL FORCE: SIDEBAR SAME AS HOME LOGO + PROJECT NAME ONLY ===== */
+.sidebar .sidebarBrandFinal,
+.sidebar .brand {
+  padding: 14px 12px !important;
+  border-radius: 22px !important;
+  background: #ffffff !important;
+  border: 1px solid #e7edf5 !important;
+  box-shadow: 0 14px 40px rgba(15,23,42,0.06) !important;
+}
+
+.sidebar .sidebarHomeBrand,
+.sidebar .brand .ssBrand {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.sidebar .sidebarHomeLogo,
+.sidebar .brand .ssLogoMark,
+.sidebar .ssLogoMark {
+  width: 72px !important;
+  height: 58px !important;
+  border-radius: 0 !important;
+  background: url("/images/sevasetu_official_logo.png") center center / contain no-repeat !important;
+  border: none !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  flex-shrink: 0 !important;
+}
+
+.sidebar .sidebarHomeLogo span,
+.sidebar .sidebarHomeLogo span::after,
+.sidebar .ssLogoMark span,
+.sidebar .ssLogoMark span::after {
+  display: none !important;
+  content: none !important;
+}
+
+.sidebar .sidebarHomeBrand h2,
+.sidebar .brand .ssBrand h2,
+.sidebar .ssBrand h2 {
+  margin: 0 !important;
+  font-size: 34px !important;
+  line-height: 1 !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.045em !important;
+}
+
+.sidebar .sidebarHomeBrand h2 b,
+.sidebar .brand .ssBrand h2 b,
+.sidebar .ssBrand h2 b {
+  color: #f97316 !important;
+}
+
+.sidebar .sidebarHomeBrand h2 strong,
+.sidebar .brand .ssBrand h2 strong,
+.sidebar .ssBrand h2 strong {
+  color: #15803d !important;
+}
+
+.sidebar .brand p,
+.sidebar .brand small,
+.sidebar .ssBrand p,
+.sidebarBrandFinal p,
+.sidebarBrandFinal small {
+  display: none !important;
+  content: none !important;
+}
+
+/* FINAL FORCE: sidebar logo only */
+.sidebar .ssLogo small,
+.sidebar .ssLogoText small,
+.sidebar .brand p,
+.sidebar .brand small {
+  display: none !important;
+}
+
+.sidebar .ssLogo {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.sidebar .ssLogoMark {
+  width: 72px !important;
+  height: 58px !important;
+  background: url("/images/sevasetu_official_logo.png") center center / contain no-repeat !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.sidebar .ssLogoMark span,
+.sidebar .ssLogoMark span::after {
+  display: none !important;
+  content: none !important;
+}
+
+.sidebar .ssLogoText b,
+.sidebar .ssLogo b {
+  color: #f97316 !important;
+  font-size: 34px !important;
+  font-weight: 950 !important;
+  line-height: 1 !important;
+  letter-spacing: -0.045em !important;
+}
+
+.sidebar .ssLogoText b span,
+.sidebar .ssLogo b span {
+  color: #15803d !important;
+}
+
+/* ===== ABSOLUTE FINAL FIX: FORCE SIDEBAR TOP LOGO + SEVASETU NAME ===== */
+.sidebar {
+  padding-top: 18px !important;
+}
+
+/* hide broken/old brand area if present */
+.sidebar > .brand,
+.sidebar .brand:empty,
+.sidebar .brandMark {
+  display: none !important;
+}
+
+/* force new top logo/name before menu */
+.sidebar::before {
+  content: "SevaSetu" !important;
+  width: calc(100% - 8px) !important;
+  min-height: 82px !important;
+  margin: 0 4px 16px 4px !important;
+  padding: 12px 14px 12px 92px !important;
+  box-sizing: border-box !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  background:
+    url("/images/sevasetu_official_logo.png") 14px center / 68px 54px no-repeat,
+    #ffffff !important;
+
+  border: 1px solid #e7edf5 !important;
+  border-radius: 24px !important;
+  box-shadow: 0 14px 40px rgba(15,23,42,0.08) !important;
+
+  font-size: 34px !important;
+  line-height: 1 !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.045em !important;
+
+  color: transparent !important;
+  background-clip: padding-box, border-box !important;
+  -webkit-text-fill-color: transparent !important;
+  background-image:
+    url("/images/sevasetu_official_logo.png"),
+    linear-gradient(90deg, #f97316 0 49%, #15803d 49% 100%) !important;
+  -webkit-background-clip: padding-box, text !important;
+}
+
+/* remove old tagline anywhere inside sidebar top */
+.sidebar p:has(+ small),
+.sidebar small {
+  display: none !important;
+}
+
+/* keep nav below forced logo */
+.sidebarNav {
+  margin-top: 0 !important;
+}

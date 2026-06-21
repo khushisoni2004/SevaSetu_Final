@@ -1,0 +1,664 @@
+html,
+body,
+#root {
+  display: block !important;
+  height: auto !important;
+  min-height: 100% !important;
+  overflow-x: hidden !important;
+}
+
+.sevaDash {
+  min-height: 100vh;
+  padding: 22px 28px 34px;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(255,153,51,0.11), transparent 26%),
+    radial-gradient(circle at 92% 12%, rgba(19,136,8,0.10), transparent 28%),
+    linear-gradient(180deg, #f5fbff 0%, #ffffff 46%, #f7fbff 100%);
+  color: #10294c;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.dashHeader {
+  min-height: 74px;
+  padding: 14px 22px;
+  border: 1px solid #e3edf7;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 18px 48px rgba(15,23,42,0.07);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.dashProject {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dashProjectLogo {
+  width: 66px;
+  height: 50px;
+  background: url("/images/sevasetu_official_logo.png") center / contain no-repeat;
+  flex: 0 0 auto;
+}
+
+.dashProject span {
+  color: #0b67b2;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.dashProject h1 {
+  margin: 4px 0 0;
+  color: #10294c;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 950;
+  letter-spacing: -0.04em;
+}
+
+.dashHeaderActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.dashHeaderActions button {
+  height: 42px;
+  padding: 0 16px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.ghostBtn {
+  border: 1px solid #dce7f2;
+  background: #ffffff;
+  color: #10294c;
+}
+
+.logoutBtn {
+  border: none;
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: #ffffff;
+}
+
+.dashHeaderActions button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px rgba(15,23,42,0.12);
+}
+
+.dashHeroPro {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(330px, 0.75fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.dashWelcomeCard,
+.citizenCardPro,
+.quickPanel,
+.progressPanel,
+.statPro {
+  border: 1px solid #e3edf7;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 24px 70px rgba(15,23,42,0.09);
+}
+
+.dashWelcomeCard {
+  min-height: 270px;
+  border-radius: 28px;
+  padding: 32px 34px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashWelcomeCard::before {
+  content: "";
+  position: absolute;
+  right: -90px;
+  bottom: -130px;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(249,115,22,0.17), rgba(21,128,61,0.13));
+}
+
+.liveBadge {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #f97316;
+  font-size: 12px;
+  font-weight: 950;
+  position: relative;
+  z-index: 2;
+}
+
+.dashWelcomeCard h2 {
+  margin: 18px 0 10px;
+  max-width: 760px;
+  color: #10294c;
+  font-size: clamp(34px, 3.4vw, 48px);
+  line-height: 1.06;
+  letter-spacing: -0.05em;
+  font-weight: 950;
+  position: relative;
+  z-index: 2;
+}
+
+.dashWelcomeCard h2 strong {
+  color: #15803d;
+}
+
+.dashWelcomeCard p {
+  max-width: 590px;
+  margin: 0;
+  color: #55667d;
+  font-size: 15px;
+  line-height: 1.55;
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+}
+
+.dashSearch {
+  margin-top: 22px;
+  max-width: 650px;
+  height: 54px;
+  border: 1px solid #dce7f2;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 0 10px 0 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+
+.dashSearch svg {
+  color: #7c8796;
+}
+
+.dashSearch input {
+  flex: 1;
+  border: none;
+  outline: none;
+  color: #10294c;
+  font-size: 14px;
+  background: transparent;
+}
+
+.dashSearch button {
+  height: 42px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.miniHighlights {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.miniHighlights span {
+  min-height: 34px;
+  padding: 0 13px;
+  border-radius: 999px;
+  border: 1px solid #e4edf7;
+  background: #f8fbff;
+  color: #10294c;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.miniHighlights svg {
+  color: #15803d;
+}
+
+.citizenCardPro {
+  border-radius: 28px;
+  padding: 26px;
+}
+
+.profileTop {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.avatarCircle {
+  width: 68px;
+  height: 68px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: 950;
+}
+
+.profileTop h3 {
+  margin: 0;
+  color: #10294c;
+  font-size: 23px;
+  line-height: 1.12;
+}
+
+.profileTop p,
+.profileTop small {
+  display: block;
+  margin-top: 5px;
+  color: #55667d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.statusRows {
+  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+}
+
+.statusRows article {
+  min-height: 54px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  border: 1px solid #e4edf7;
+  background: #f8fbff;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.statusRows svg {
+  color: #15803d;
+}
+
+.statusRows b {
+  color: #10294c;
+  font-size: 14px;
+}
+
+.statusRows span {
+  display: block;
+  margin-top: 2px;
+  color: #607089;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.profileBtn,
+.completeBtn {
+  margin-top: 18px;
+  width: 100%;
+  height: 46px;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: white;
+  font-size: 14px;
+  font-weight: 950;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  cursor: pointer;
+}
+
+.statsProGrid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.statPro {
+  min-height: 132px;
+  border-radius: 24px;
+  padding: 20px;
+  transition: 0.25s ease;
+}
+
+.statPro:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 30px 65px rgba(15,23,42,0.12);
+}
+
+.statIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 15px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 13px;
+}
+
+.statPro.blue .statIcon {
+  background: rgba(11,103,178,0.10);
+  color: #0b67b2;
+}
+
+.statPro.orange .statIcon {
+  background: rgba(249,115,22,0.12);
+  color: #f97316;
+}
+
+.statPro.green .statIcon {
+  background: rgba(21,128,61,0.12);
+  color: #15803d;
+}
+
+.statPro.navy .statIcon {
+  background: rgba(16,41,76,0.10);
+  color: #10294c;
+}
+
+.statPro span {
+  display: block;
+  color: #607089;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.statPro b {
+  display: block;
+  margin-top: 8px;
+  color: #10294c;
+  font-size: 26px;
+}
+
+.statPro small {
+  display: block;
+  margin-top: 7px;
+  color: #7b8ba1;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dashContentGrid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.72fr);
+  gap: 18px;
+}
+
+.quickPanel,
+.progressPanel {
+  border-radius: 28px;
+  padding: 24px;
+}
+
+.sectionHead {
+  text-align: center;
+}
+
+.sectionHead span {
+  color: #f97316;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.sectionHead h2 {
+  margin: 8px 0 20px;
+  color: #10294c;
+  font-size: 26px;
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+}
+
+.actionGridPro {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.actionGridPro button {
+  min-height: 122px;
+  border: 1px solid #e4edf7;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 50px 1fr 20px;
+  gap: 16px;
+  text-align: left;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.actionGridPro button:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 26px 60px rgba(15,23,42,0.12);
+}
+
+.actionIconPro {
+  width: 50px;
+  height: 50px;
+  border-radius: 17px;
+  display: grid;
+  place-items: center;
+  color: #f97316;
+  background: linear-gradient(135deg, rgba(249,115,22,0.12), rgba(21,128,61,0.12));
+}
+
+.actionText small {
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.actionText b {
+  display: block;
+  margin-top: 5px;
+  color: #10294c;
+  font-size: 16px;
+}
+
+.actionText p {
+  margin: 5px 0 0;
+  color: #607089;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 650;
+}
+
+.actionArrow {
+  color: #94a3b8;
+}
+
+.progressCards {
+  display: grid;
+  gap: 14px;
+}
+
+.progressCards article {
+  min-height: 70px;
+  padding: 13px;
+  border-radius: 18px;
+  border: 1px solid #e4edf7;
+  background: #f8fbff;
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  gap: 12px;
+  align-items: center;
+}
+
+.progressIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+}
+
+.progressIcon.orange {
+  background: rgba(249,115,22,0.12);
+  color: #f97316;
+}
+
+.progressIcon.green {
+  background: rgba(21,128,61,0.12);
+  color: #15803d;
+}
+
+.progressIcon.blue {
+  background: rgba(11,103,178,0.10);
+  color: #0b67b2;
+}
+
+.progressIcon.navy {
+  background: rgba(16,41,76,0.10);
+  color: #10294c;
+}
+
+.progressCards b {
+  display: block;
+  color: #10294c;
+  font-size: 14px;
+}
+
+.progressCards p {
+  margin: 3px 0 0;
+  color: #607089;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.progressCards strong {
+  color: #15803d;
+  font-size: 13px;
+}
+
+@media (max-width: 1180px) {
+  .dashHeroPro,
+  .dashContentGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statsProGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .sevaDash {
+    padding: 16px;
+  }
+
+  .dashHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dashHeaderActions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .dashHeaderActions button {
+    flex: 1;
+  }
+
+  .dashWelcomeCard,
+  .citizenCardPro,
+  .quickPanel,
+  .progressPanel {
+    padding: 22px;
+    border-radius: 24px;
+  }
+
+  .statsProGrid,
+  .actionGridPro {
+    grid-template-columns: 1fr;
+  }
+
+  .actionGridPro button {
+    grid-template-columns: 52px 1fr;
+  }
+
+  .actionArrow {
+    display: none;
+  }
+
+  .dashSearch {
+    height: auto;
+    padding: 12px;
+    flex-wrap: wrap;
+  }
+
+  .dashSearch button {
+    width: 100%;
+  }
+}
+
+/* ===== SAFE HIDE EXTRA TOP DASHBOARD LINE ONLY ===== */
+body:has(.sevaDash) .pageHero:first-child:not(.dashWelcomeCard),
+body:has(.sevaDash) .pageHeader:first-child,
+body:has(.sevaDash) .contentHeader:first-child,
+body:has(.sevaDash) .mainHeader:first-child,
+body:has(.sevaDash) .topHeader:first-child {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Dashboard same rahe, top spacing clean */
+.sevaDash {
+  padding-top: 18px !important;
+}
+
+
+/* ===== REMOVE RIGHT PROFILE CARD FROM DASHBOARD ===== */
+.citizenCardPro {
+  display: none !important;
+}
+
+/* Welcome card full width after profile card remove */
+.dashHeroPro {
+  grid-template-columns: 1fr !important;
+}
+
+.dashWelcomeCard {
+  min-height: 260px !important;
+}
+
+.dashSearch {
+  max-width: 760px !important;
+}
+

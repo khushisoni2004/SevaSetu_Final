@@ -1,0 +1,41 @@
+.ssLogo {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+.ssLogoImage {
+  width: 72px !important;
+  height: 58px !important;
+  background: url("/images/sidebar_logo.png") center center / contain no-repeat !important;
+  flex-shrink: 0 !important;
+}
+
+.ssLogoName {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 0 !important;
+  font-size: 34px !important;
+  line-height: 1 !important;
+  font-weight: 950 !important;
+  letter-spacing: -0.045em !important;
+}
+
+.ssLogoName b {
+  color: #f97316 !important;
+  font-weight: 950 !important;
+}
+
+.ssLogoName strong {
+  color: #15803d !important;
+  font-weight: 950 !important;
+}
+
+.ssLogo small,
+.ssLogo p,
+.ssLogoMark,
+.ssLogoMark span,
+.ssLogoMark span::after {
+  display: none !important;
+}

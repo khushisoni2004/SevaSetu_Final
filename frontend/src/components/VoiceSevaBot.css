@@ -1,0 +1,698 @@
+.voiceBotPage {
+  min-height: 100vh;
+  padding: 26px 30px 44px;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(249,115,22,0.10), transparent 30%),
+    radial-gradient(circle at 94% 7%, rgba(21,128,61,0.10), transparent 32%),
+    linear-gradient(180deg, #f4fbff 0%, #ffffff 45%, #f7fbff 100%);
+  color: #10294c;
+}
+
+.voiceBotHero {
+  min-height: 190px;
+  padding: 28px;
+  border-radius: 30px;
+  border: 1px solid #dbeafe;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(15,23,42,0.08);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 24px;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.voiceBotHero::after {
+  content: "";
+  position: absolute;
+  right: -45px;
+  top: -70px;
+  width: 310px;
+  height: 310px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249,115,22,0.18), rgba(21,128,61,0.07), transparent 70%);
+}
+
+.voiceBotHero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.voiceBotHero span {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #f97316;
+  font-size: 11px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.voiceBotHero h1 {
+  margin: 14px 0 8px;
+  color: #0f172a;
+  font-size: clamp(38px, 4.4vw, 64px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.voiceBotHero p {
+  margin: 0;
+  max-width: 780px;
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 780;
+  line-height: 1.55;
+}
+
+.voiceBotHero aside {
+  justify-self: end;
+  width: 205px;
+  min-height: 135px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #f2fbff, #ffffff);
+  border: 1px solid #dbeafe;
+  box-shadow: 0 22px 55px rgba(15,23,42,0.10);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.voiceBotHero aside img {
+  width: 88px;
+  height: 54px;
+  object-fit: contain;
+}
+
+.voiceBotHero aside b {
+  display: block;
+  color: #15803d;
+  font-size: 28px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.voiceBotHero aside small {
+  color: #334155;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.voiceBotPanel {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) 390px;
+  gap: 20px;
+  align-items: start;
+}
+
+.voiceInputCard,
+.voiceReplyCard,
+.voiceMatchesSection {
+  border: 1px solid #dbeafe;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 46px rgba(15,23,42,0.07);
+  padding: 24px;
+}
+
+.voiceBotAvatar {
+  width: 74px;
+  height: 74px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #f97316, #15803d);
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.voiceInputCard h2,
+.voiceReplyCard h2,
+.voiceSectionHead h2 {
+  margin: 0 0 8px;
+  color: #10294c;
+  font-size: 26px;
+  line-height: 1.05;
+}
+
+.voiceInputCard p,
+.voiceReplyCard p,
+.voiceSectionHead p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 760;
+  line-height: 1.55;
+}
+
+.voiceInputCard textarea {
+  width: 100%;
+  min-height: 130px;
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid #dbeafe;
+  border-radius: 18px;
+  background: #f8fbff;
+  color: #10294c;
+  font-size: 14px;
+  font-weight: 750;
+  outline: none;
+  resize: vertical;
+}
+
+.voiceActions {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.voiceActions button,
+.voiceSchemeCard button {
+  min-height: 46px;
+  border: none;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 950;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+}
+
+.micBtn {
+  background: #fff7ed;
+  color: #f97316;
+}
+
+.stopBtn {
+  background: #fff1f2;
+  color: #e11d48;
+}
+
+.askBtn,
+.voiceSchemeCard button {
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: #ffffff;
+}
+
+.askBtn svg,
+.voiceSchemeCard button svg {
+  stroke: #ffffff;
+}
+
+.speakBtn {
+  background: #ecfdf5;
+  color: #15803d;
+}
+
+.voiceActions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.sampleQueryBox {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 20px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+}
+
+.sampleQueryBox b {
+  display: block;
+  margin-bottom: 10px;
+  color: #10294c;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.sampleQueryBox div {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sampleQueryBox button {
+  border: 1px solid #dbeafe;
+  background: #ffffff;
+  color: #10294c;
+  border-radius: 999px;
+  padding: 8px 11px;
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.emptyReply {
+  color: #94a3b8 !important;
+}
+
+.extractedBox {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+}
+
+.extractedBox b {
+  display: block;
+  color: #f97316;
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.extractedBox div {
+  margin-top: 9px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.extractedBox span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #10294c;
+  font-size: 11px;
+  font-weight: 850;
+  border: 1px solid #dbeafe;
+}
+
+.voiceMatchesSection {
+  margin-top: 20px;
+}
+
+.voiceMatchGrid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.voiceSchemeCard {
+  padding: 20px;
+  border-radius: 24px;
+  border: 1px solid #dbeafe;
+  background: #f8fbff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.voiceSchemeTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.voiceSchemeTop span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.voiceSchemeTop b {
+  color: #f97316;
+  font-size: 22px;
+  font-weight: 950;
+}
+
+.voiceSchemeCard h3 {
+  margin: 0;
+  color: #10294c;
+  font-size: 19px;
+  line-height: 1.15;
+}
+
+.voiceSchemeCard p {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
+.voiceReasonBox {
+  display: grid;
+  gap: 7px;
+}
+
+.voiceReasonBox small {
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  gap: 6px;
+  color: #10294c;
+  font-size: 11px;
+  font-weight: 780;
+  line-height: 1.35;
+}
+
+.voiceReasonBox svg {
+  color: #15803d;
+}
+
+.voiceMissingDocs {
+  padding: 9px 10px;
+  border-radius: 14px;
+  background: #fff7ed;
+  color: #f97316;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.noVoiceMatches {
+  min-height: 170px;
+  border: 1px dashed #bfdbfe;
+  border-radius: 22px;
+  background: #f8fbff;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #64748b;
+  margin-top: 16px;
+}
+
+.noVoiceMatches b {
+  color: #10294c;
+  font-size: 16px;
+}
+
+@media (max-width: 1180px) {
+  .voiceMatchGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .voiceBotPanel {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .voiceBotHero {
+    grid-template-columns: 1fr;
+  }
+
+  .voiceBotHero aside {
+    justify-self: start;
+  }
+
+  .voiceActions {
+    grid-template-columns: 1fr;
+  }
+
+  .voiceMatchGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== FEMALE VOICE SELECTOR ===== */
+.voiceStyleBox {
+  margin-top: 14px;
+  padding: 13px;
+  border-radius: 18px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+}
+
+.voiceStyleBox label {
+  display: grid;
+  gap: 7px;
+  color: #10294c;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.voiceStyleBox select {
+  height: 44px;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #10294c;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 850;
+  outline: none;
+}
+
+/* ===== REAL HUMAN-LIKE HINDI VOICE FIX ===== */
+.voiceStyleBox {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 170px !important;
+  gap: 10px !important;
+  align-items: end !important;
+}
+
+.voiceStyleBox select {
+  width: 100% !important;
+}
+
+.testVoiceBtn {
+  height: 44px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .voiceStyleBox {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===== LANGUAGE + VOICE SELECTOR FIX ===== */
+.languageVoiceBox {
+  grid-template-columns: 190px minmax(0, 1fr) 170px !important;
+}
+
+@media (max-width: 920px) {
+  .languageVoiceBox {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ===== VOICE CATEGORY / CASTE SELECTOR ===== */
+.voiceCategoryBox {
+  margin-top: 14px;
+  padding: 13px;
+  border-radius: 18px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+}
+
+.voiceCategoryBox label {
+  display: grid;
+  gap: 7px;
+  color: #10294c;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.voiceCategoryBox select {
+  height: 44px;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  background: #ffffff;
+  color: #10294c;
+  padding: 0 12px;
+  font-size: 13px;
+  font-weight: 850;
+  outline: none;
+}
+
+.voiceCategoryBox p {
+  margin: 9px 0 0 !important;
+  color: #e11d48 !important;
+  font-size: 12px !important;
+  font-weight: 900 !important;
+}
+
+/* ===== STATE + CATEGORY OPTIONS ===== */
+.voiceProfileOptions {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+
+.voiceProfileOptions p {
+  grid-column: 1 / -1 !important;
+}
+
+@media (max-width: 720px) {
+  .voiceProfileOptions {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* SAME SIZE OUTPUT SCHEME CARDS */
+.voiceResultsGrid,
+.matchedSchemesGrid,
+.topSchemesGrid,
+.schemeResultsGrid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+}
+
+.voiceResultCard,
+.matchedSchemeCard,
+.topSchemeCard,
+.voiceSchemeCard {
+  height: 100% !important;
+  min-height: 360px !important;
+  max-height: 360px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.voiceResultCard p,
+.matchedSchemeCard p,
+.topSchemeCard p,
+.voiceSchemeCard p {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 5 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+.voiceResultCard h3,
+.matchedSchemeCard h3,
+.topSchemeCard h3,
+.voiceSchemeCard h3 {
+  min-height: 52px !important;
+  max-height: 52px !important;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+}
+
+.voiceResultCard .schemeReasons,
+.matchedSchemeCard .schemeReasons,
+.topSchemeCard .schemeReasons,
+.voiceSchemeCard .schemeReasons {
+  margin-top: auto !important;
+}
+
+.voiceResultCard button,
+.matchedSchemeCard button,
+.topSchemeCard button,
+.voiceSchemeCard button,
+.voiceResultCard a,
+.matchedSchemeCard a,
+.topSchemeCard a,
+.voiceSchemeCard a {
+  margin-top: auto !important;
+}
+
+/* FINAL FIX: Voice Bot output cards equal size */
+.voiceBotPage [class*="Scheme"],
+.voiceBotPage [class*="scheme"],
+.voiceBotPage [class*="Card"],
+.voiceBotPage [class*="card"] {
+  box-sizing: border-box;
+}
+
+.voiceBotPage .topMatchingSchemes,
+.voiceBotPage .matchedSchemes,
+.voiceBotPage .schemeResults,
+.voiceBotPage .voiceResults,
+.voiceBotPage .resultsGrid,
+.voiceBotPage .schemesGrid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+  gap: 18px !important;
+  align-items: stretch !important;
+}
+
+.voiceBotPage .matchedSchemeCard,
+.voiceBotPage .schemeMatchCard,
+.voiceBotPage .voiceSchemeCard,
+.voiceBotPage .topSchemeCard,
+.voiceBotPage .resultCard {
+  height: 390px !important;
+  min-height: 390px !important;
+  max-height: 390px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.voiceBotPage .matchedSchemeCard h3,
+.voiceBotPage .schemeMatchCard h3,
+.voiceBotPage .voiceSchemeCard h3,
+.voiceBotPage .topSchemeCard h3,
+.voiceBotPage .resultCard h3 {
+  height: 52px !important;
+  min-height: 52px !important;
+  max-height: 52px !important;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+}
+
+.voiceBotPage .matchedSchemeCard p,
+.voiceBotPage .schemeMatchCard p,
+.voiceBotPage .voiceSchemeCard p,
+.voiceBotPage .topSchemeCard p,
+.voiceBotPage .resultCard p {
+  max-height: 92px !important;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 4 !important;
+  -webkit-box-orient: vertical !important;
+}
+
+.voiceBotPage .matchedSchemeCard ul,
+.voiceBotPage .schemeMatchCard ul,
+.voiceBotPage .voiceSchemeCard ul,
+.voiceBotPage .topSchemeCard ul,
+.voiceBotPage .resultCard ul {
+  max-height: 92px !important;
+  overflow: hidden !important;
+}
+
+.voiceBotPage .matchedSchemeCard li,
+.voiceBotPage .schemeMatchCard li,
+.voiceBotPage .voiceSchemeCard li,
+.voiceBotPage .topSchemeCard li,
+.voiceBotPage .resultCard li {
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+
+.voiceBotPage .matchedSchemeCard a,
+.voiceBotPage .schemeMatchCard a,
+.voiceBotPage .voiceSchemeCard a,
+.voiceBotPage .topSchemeCard a,
+.voiceBotPage .resultCard a,
+.voiceBotPage .matchedSchemeCard button,
+.voiceBotPage .schemeMatchCard button,
+.voiceBotPage .voiceSchemeCard button,
+.voiceBotPage .topSchemeCard button,
+.voiceBotPage .resultCard button {
+  margin-top: auto !important;
+}

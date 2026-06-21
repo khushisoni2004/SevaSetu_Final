@@ -1,0 +1,351 @@
+.voiceFormHelpPage {
+  min-height: 100vh;
+  padding: 26px 30px 44px;
+  background:
+    radial-gradient(circle at 8% 8%, rgba(249,115,22,0.10), transparent 30%),
+    radial-gradient(circle at 94% 7%, rgba(21,128,61,0.10), transparent 32%),
+    linear-gradient(180deg, #f4fbff 0%, #ffffff 45%, #f7fbff 100%);
+  color: #10294c;
+}
+
+.voiceFormHero {
+  min-height: 190px;
+  padding: 28px;
+  border-radius: 30px;
+  border: 1px solid #dbeafe;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(15,23,42,0.08);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 240px;
+  gap: 24px;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.voiceFormHero::after {
+  content: "";
+  position: absolute;
+  right: -45px;
+  top: -70px;
+  width: 310px;
+  height: 310px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249,115,22,0.18), rgba(21,128,61,0.07), transparent 70%);
+}
+
+.voiceFormHero > * {
+  position: relative;
+  z-index: 2;
+}
+
+.voiceFormHero span {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #fff7ed;
+  color: #f97316;
+  font-size: 11px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.voiceFormHero h1 {
+  margin: 14px 0 8px;
+  color: #0f172a;
+  font-size: clamp(36px, 4vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.voiceFormHero p {
+  margin: 0;
+  max-width: 780px;
+  color: #64748b;
+  font-size: 15px;
+  font-weight: 780;
+  line-height: 1.55;
+}
+
+.voiceFormHero aside {
+  justify-self: end;
+  width: 205px;
+  min-height: 145px;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #f2fbff, #ffffff);
+  border: 1px solid #dbeafe;
+  box-shadow: 0 22px 55px rgba(15,23,42,0.10);
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.voiceFormHero aside img {
+  width: 118px;
+  height: 72px;
+  object-fit: contain;
+}
+
+.voiceFormHero aside b {
+  display: block;
+  color: #15803d;
+  font-size: 26px;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.voiceFormHero aside small {
+  color: #334155;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.voiceFormPanel {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) 410px;
+  gap: 20px;
+  align-items: start;
+}
+
+.voiceQuestionCard,
+.voiceProfilePreview {
+  border: 1px solid #dbeafe;
+  border-radius: 28px;
+  background: #ffffff;
+  box-shadow: 0 18px 46px rgba(15,23,42,0.07);
+  padding: 24px;
+}
+
+.voiceFormAvatar {
+  width: 74px;
+  height: 74px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #f97316, #15803d);
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  margin-bottom: 14px;
+}
+
+.stepBadge {
+  display: inline-flex;
+  padding: 8px 11px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 950;
+}
+
+.voiceQuestionCard h2,
+.voiceProfilePreview h2 {
+  margin: 14px 0 8px;
+  color: #10294c;
+  font-size: 28px;
+  line-height: 1.12;
+}
+
+.voiceQuestionCard p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 760;
+  line-height: 1.55;
+}
+
+.voiceProgressBar {
+  margin-top: 18px;
+  height: 10px;
+  border-radius: 999px;
+  background: #eaf2fb;
+  overflow: hidden;
+}
+
+.voiceProgressBar i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #f97316, #15803d);
+}
+
+.voiceAnswerBox {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 20px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+}
+
+.voiceAnswerBox b {
+  display: block;
+  margin-bottom: 6px;
+  color: #f97316;
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.voiceAnswerBox p {
+  color: #10294c;
+  font-weight: 850;
+}
+
+.voiceFormActions {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.voiceFormActions button,
+.saveVoiceProfileBtn {
+  min-height: 46px;
+  border: none;
+  border-radius: 15px;
+  font-size: 13px;
+  font-weight: 950;
+  cursor: pointer;
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+}
+
+.speakQuestionBtn {
+  background: #ecfdf5;
+  color: #15803d;
+}
+
+.startMicBtn,
+.saveVoiceProfileBtn {
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: #ffffff;
+}
+
+.resetVoiceBtn {
+  background: #fff1f2;
+  color: #e11d48;
+}
+
+.voiceFormActions button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.previewLine {
+  min-height: 54px;
+  border-radius: 17px;
+  border: 1px solid #dbeafe;
+  background: #f8fbff;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 26px 95px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.previewLine svg {
+  color: #f97316;
+}
+
+.previewLine span {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 950;
+}
+
+.previewLine b {
+  color: #10294c;
+  font-size: 13px;
+  font-weight: 950;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.docPreviewBox {
+  margin-top: 14px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+}
+
+.docPreviewBox h3 {
+  margin: 0 0 10px;
+  color: #10294c;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.docPreviewBox p {
+  margin: 7px 0;
+  color: #10294c;
+  font-size: 12px;
+  font-weight: 850;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.docPreviewBox .ok svg {
+  color: #15803d;
+}
+
+.docPreviewBox .missing svg {
+  color: #f97316;
+}
+
+.docPreviewBox small {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.saveVoiceProfileBtn {
+  width: 100%;
+  margin-top: 16px;
+}
+
+@media (max-width: 980px) {
+  .voiceFormHero,
+  .voiceFormPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .voiceFormHero aside {
+    justify-self: start;
+  }
+
+  .voiceFormActions {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== FINAL TITLE SIZE FIX ===== */
+.voiceFormHero h1 {
+  font-size: clamp(30px, 3vw, 46px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -0.04em !important;
+}
+
+.voiceFormHero p {
+  max-width: 720px !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+}
+
+.voiceQuestionCard h2 {
+  font-size: 24px !important;
+  line-height: 1.2 !important;
+}
+
+.voiceProfilePreview h2 {
+  font-size: 22px !important;
+}

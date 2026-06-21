@@ -1,0 +1,28 @@
+# Node
+node_modules/
+dist/
+.env
+.env.local
+.env.production
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Database local
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets
+*.pem
+*.key
