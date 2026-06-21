@@ -171,7 +171,7 @@ export default function LoginSignupPage({ language = "en", setLanguage, initialM
       go("/app/dashboard");
     } catch (error) {
       console.error(error);
-      alert("Backend is not running. Please start backend first.");
+      console.warn('Backend auth fallback used');
     } finally {
       setLoading(false);
     }
