@@ -1,8 +1,13 @@
+export const API_BASE_URL =
+  (import.meta.env.VITE_API_URL || "https://sevasetu-backend-3ed6.onrender.com").replace(/\/$/, "");
+
 export async function api(path, options = {}) {
-  const API_URL = import.meta.env.VITE_API_URL || "https://sevasetu-backend-3ed6.onrender.com";
+  const cleanPath = path.startsWith("/") ? path : `/${path}`;
   const token =
     localStorage.getItem("sevasetu_token") ||
-    localStorage.getItem("sevasetu_auth_token");
+    localStorage.getItem("auth_token") ||
+    localStorage.getItem("token") ||
+    "";
 
   const headers = {
     "Content-Type": "application/json",
@@ -13,21 +18,25 @@ export async function api(path, options = {}) {
     headers.Authorization = `Bearer ${token}`;
   }
 
-  const response = await fetch(`${API_URL}${path}`, {
+  const res = await fetch(`${API_BASE_URL}${cleanPath}`, {
     ...options,
     headers,
   });
 
-  let data = null;
+  const text = await res.text();
+  let data = {};
+
   try {
-    data = await response.json();
+    data = text ? JSON.parse(text) : {};
   } catch {
-    data = {};
+    data = { message: text };
   }
 
-  if (!response.ok) {
-    throw new Error(data.detail || data.message || "API request failed");
+  if (!res.ok) {
+    throw new Error(data.detail || data.message || `API failed: ${res.status}`);
   }
 
   return data;
 }
+
+export default api;
