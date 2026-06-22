@@ -7,6 +7,11 @@ SevaSetu is a full-stack government scheme assistance web application designed t
 Frontend: https://seva-setu-final.vercel.app
 Backend: https://sevasetu-backend-3ed6.onrender.com
 
+
+## Home Page Screenshot
+
+![SevaSetu Home Page](frontend/public/images/homepage.png)
+
 ## Tech Stack
 
 **Frontend:** React.js, Vite, CSS
