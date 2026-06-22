@@ -8,7 +8,7 @@ Frontend: https://seva-setu-final.vercel.app
 Backend: https://sevasetu-backend-3ed6.onrender.com
 
 
-## Home Page Screenshot
+##  Screenshot
 
 ![SevaSetu Home Page](frontend/public/images/homepage.png)
 
