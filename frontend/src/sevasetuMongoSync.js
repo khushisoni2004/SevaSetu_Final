@@ -1,6 +1,6 @@
 const API_BASE =
   import.meta.env.VITE_API_URL ||
-  "https://sevasetu-backend-r3yb.onrender.com";
+  "https://sevasetu-backend-3ed6.onrender.com";
 
 function safeJson(value, fallback = null) {
   try {

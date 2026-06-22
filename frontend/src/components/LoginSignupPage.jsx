@@ -106,7 +106,7 @@ export default function LoginSignupPage({ language = "en", setLanguage, initialM
     try {
       setLoading(true);
 
-      const API_URL = import.meta.env.VITE_API_URL || "https://sevasetu-backend-r3yb.onrender.com";
+      const API_URL = import.meta.env.VITE_API_URL || "https://sevasetu-backend-3ed6.onrender.com";
 
       const payload =
         mode === "signup"

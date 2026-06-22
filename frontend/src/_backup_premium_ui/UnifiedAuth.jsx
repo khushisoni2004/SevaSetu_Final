@@ -56,7 +56,7 @@ export default function UnifiedAuth({ language = "en", setLanguage = () => {} })
 
     try {
       const endpoint = mode === "signup" ? "/api/auth/register" : "/api/auth/login";
-      await fetch(`https://sevasetu-backend-r3yb.onrender.com${endpoint}`, {
+      await fetch(`https://sevasetu-backend-3ed6.onrender.com${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
