@@ -34,18 +34,18 @@ JWT_EXPIRE_MINUTES = int(os.getenv("JWT_EXPIRE_MINUTES", "1440"))
 
 app = FastAPI(title="SevaSetu Auth Backend", version="1.0.0")
 
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ],
-    allow_credentials=True,
-    allow_methods=["*"],
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allow_headers=["*"],
+    expose_headers=["*"],
+    max_age=86400,
 )
+
+
 
 client = AsyncIOMotorClient(MONGO_URI, **_mongo_kwargs(MONGO_URI))
 db = client[DB_NAME]
@@ -3392,4 +3392,3 @@ async def health():
 @app.get("/api/health")
 async def api_health():
     return {"ok": True, "status": "running"}
-
