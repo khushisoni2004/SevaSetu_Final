@@ -2,6 +2,14 @@ import re
 import json
 from pathlib import Path
 import os
+import certifi
+
+def _mongo_kwargs(uri: str):
+    uri = str(uri or "")
+    if uri.startswith("mongodb+srv://") or "mongodb.net" in uri:
+        return {"tlsCAFile": certifi.where()}
+    return {}
+
 import hmac
 import hashlib
 import secrets
@@ -9,7 +17,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Optional
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, Header
+from fastapi import FastAPI, HTTPException, Header, Request, Body
 from fastapi.middleware.cors import CORSMiddleware
 from jose import JWTError, jwt
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -39,7 +47,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-client = AsyncIOMotorClient(MONGO_URI)
+client = AsyncIOMotorClient(MONGO_URI, **_mongo_kwargs(MONGO_URI))
 db = client[DB_NAME]
 users = db["users"]
 profiles = db["profiles"]
@@ -271,138 +279,8 @@ def clean_saved_scheme(item: dict) -> dict:
     }
 
 
-@app.get("/api/saved-db")
-async def get_saved_schemes(authorization: Optional[str] = Header(default=None)):
-    user = await get_user_from_token(authorization)
-    data = []
-    cursor = saved_schemes.find({"user_email": user["email"]}).sort("saved_at", -1)
-
-    async for item in cursor:
-        data.append(clean_saved_scheme(item))
-
-    return {
-        "count": len(data),
-        "items": data,
-    }
 
 
-@app.post("/api/saved-db")
-async def save_scheme(data: SavedSchemeRequest, authorization: Optional[str] = Header(default=None)):
-    user = await get_user_from_token(authorization)
-    scheme = data.scheme or {}
-
-    scheme_id = str(scheme.get("id") or scheme.get("title") or "").strip()
-    if not scheme_id:
-        raise HTTPException(status_code=400, detail="Invalid scheme data")
-
-    doc = {
-        "user_id": str(user["_id"]),
-        "user_email": user["email"],
-        "scheme": scheme,
-        "saved_at": now_utc(),
-    }
-
-    try:
-        existing = await saved_schemes.find_one({
-            "user_email": user["email"],
-            "scheme.id": scheme_id,
-        })
-
-        if existing:
-            return {
-                "message": "Scheme already saved",
-                "item": clean_saved_scheme(existing),
-            }
-
-        result = await saved_schemes.insert_one(doc)
-        doc["_id"] = result.inserted_id
-
-        return {
-            "message": "Scheme saved successfully",
-            "item": clean_saved_scheme(doc),
-        }
-    except Exception as e:
-        existing = await saved_schemes.find_one({
-            "user_email": user["email"],
-            "scheme.id": scheme_id,
-        })
-        if existing:
-            return {
-                "message": "Scheme already saved",
-                "item": clean_saved_scheme(existing),
-            }
-        raise HTTPException(status_code=500, detail=str(e))
-
-
-@app.delete("/api/saved-db/{scheme_id}")
-async def delete_saved_scheme(scheme_id: str, authorization: Optional[str] = Header(default=None)):
-    user = await get_user_from_token(authorization)
-
-    result = await saved_schemes.delete_one({
-        "user_email": user["email"],
-        "scheme.id": scheme_id,
-    })
-
-    if result.deleted_count == 0:
-        raise HTTPException(status_code=404, detail="Saved scheme not found")
-
-    return {
-        "message": "Scheme removed successfully",
-        "deleted": True,
-        "scheme_id": scheme_id,
-    }
-
-
-@app.delete("/api/saved-db/mongo/{mongo_id}")
-async def delete_saved_scheme_by_mongo_id(mongo_id: str, authorization: Optional[str] = Header(default=None)):
-    user = await get_user_from_token(authorization)
-
-    try:
-        oid = ObjectId(mongo_id)
-    except Exception:
-        raise HTTPException(status_code=400, detail="Invalid MongoDB id")
-
-    result = await saved_schemes.delete_one({
-        "_id": oid,
-        "user_email": user["email"],
-    })
-
-    if result.deleted_count == 0:
-        raise HTTPException(status_code=404, detail="Saved scheme not found")
-
-    return {
-        "message": "Scheme removed successfully",
-        "deleted": True,
-        "mongo_id": mongo_id,
-    }
-
-
-def public_user(user: dict) -> dict:
-    return {
-        "id": str(user.get("_id")),
-        "name": user.get("name", ""),
-        "email": user.get("email", ""),
-        "mobile": user.get("mobile", ""),
-        "age": user.get("age"),
-        "gender": user.get("gender", ""),
-        "state": user.get("state", ""),
-        "district": user.get("district", ""),
-        "city": user.get("city", ""),
-        "category": user.get("category", ""),
-        "incomeRange": user.get("incomeRange", ""),
-        "occupation": user.get("occupation", ""),
-        "beneficiaryType": user.get("beneficiaryType", ""),
-        "documents": user.get("documents", []),
-        "familySize": user.get("familySize"),
-        "disability": user.get("disability", ""),
-        "student": user.get("student", False),
-        "farmer": user.get("farmer", False),
-        "woman": user.get("woman", False),
-        "seniorCitizen": user.get("seniorCitizen", False),
-        "created_at": user.get("created_at"),
-        "last_login": user.get("last_login"),
-        "updated_at": user.get("updated_at"),
-    }
 
 
 @app.put("/api/profile")
@@ -3199,7 +3077,7 @@ import os
 SEVASETU_MONGO_URI = os.getenv("MONGODB_URI", "mongodb://localhost:27017")
 SEVASETU_DB_NAME = os.getenv("MONGODB_DB", "sevasetu_db")
 
-_sevasetu_client = MongoClient(SEVASETU_MONGO_URI)
+_sevasetu_client = MongoClient(SEVASETU_MONGO_URI, **_mongo_kwargs(SEVASETU_MONGO_URI))
 _sevasetu_db = _sevasetu_client[SEVASETU_DB_NAME]
 
 def _now_iso():
@@ -3301,3 +3179,217 @@ async def database_summary():
         data[name] = _sevasetu_db[name].count_documents({})
     return {"ok": True, "database": SEVASETU_DB_NAME, "collections": data}
 # ================= END SEVASETU FINAL MONGODB SYNC APIs =================
+
+# ===== SevaSetu Proper Saved Schemes Backend =====
+
+def _json_safe(value):
+    if isinstance(value, ObjectId):
+        return str(value)
+    if isinstance(value, list):
+        return [_json_safe(v) for v in value]
+    if isinstance(value, dict):
+        return {k: _json_safe(v) for k, v in value.items()}
+    return value
+
+
+def _get_collection(name):
+    return db[name]
+
+
+def _get_user_key_from_request(request: Request):
+    auth = request.headers.get("authorization") or request.headers.get("Authorization") or ""
+    token = ""
+
+    if auth.lower().startswith("bearer "):
+        token = auth.split(" ", 1)[1].strip()
+
+    if token:
+        try:
+            secret = globals().get("SECRET_KEY", "sevasetu-secret-key")
+            algorithm = globals().get("ALGORITHM", "HS256")
+            data = jwt.decode(token, secret, algorithms=[algorithm])
+            user_key = (
+                data.get("email")
+                or data.get("sub")
+                or data.get("user_id")
+                or data.get("id")
+                or data.get("_id")
+            )
+            if user_key:
+                return str(user_key).lower().strip()
+        except Exception:
+            pass
+
+    header_user = (
+        request.headers.get("x-user-email")
+        or request.headers.get("x-user-id")
+        or request.headers.get("x-sevasetu-user")
+    )
+    if header_user:
+        return str(header_user).lower().strip()
+
+    return "guest"
+
+
+def _scheme_identity(scheme: dict, payload: dict = None):
+    payload = payload or {}
+    sid = (
+        payload.get("scheme_id")
+        or payload.get("id")
+        or payload.get("mongo_id")
+        or scheme.get("id")
+        or scheme.get("_id")
+        or scheme.get("mongo_id")
+        or scheme.get("title")
+        or scheme.get("name")
+    )
+    return str(sid or "saved-scheme").strip()
+
+
+@app.get("/api/database/summary")
+async def database_summary():
+    try:
+        names = await db.list_collection_names()
+        collections = {}
+        for name in names:
+            collections[name] = await db[name].count_documents({})
+        return {
+            "ok": True,
+            "database": db.name,
+            "collections": collections,
+        }
+    except Exception as e:
+        return {
+            "ok": False,
+            "error": str(e),
+        }
+
+
+@app.get("/api/saved-db")
+async def get_saved_schemes_db(request: Request):
+    saved_schemes = _get_collection("saved_schemes")
+    user_key = _get_user_key_from_request(request)
+
+    query = {"user_key": user_key}
+    docs = await saved_schemes.find(query).sort("saved_at", -1).to_list(length=500)
+
+    if not docs and user_key != "guest":
+        docs = await saved_schemes.find({"user_key": "guest"}).sort("saved_at", -1).to_list(length=500)
+
+    items = []
+    for d in docs:
+        d = _json_safe(d)
+        d["mongo_id"] = d.pop("_id", d.get("mongo_id"))
+        items.append(d)
+
+    return {
+        "ok": True,
+        "user_key": user_key,
+        "count": len(items),
+        "items": items,
+    }
+
+
+@app.post("/api/saved-db")
+async def save_scheme_db(request: Request, payload: dict = Body(...)):
+    saved_schemes = _get_collection("saved_schemes")
+    user_key = _get_user_key_from_request(request)
+
+    scheme = payload.get("scheme") if isinstance(payload.get("scheme"), dict) else payload
+    scheme = _json_safe(scheme or {})
+    scheme_id = _scheme_identity(scheme, payload)
+
+    doc = {
+        "user_key": user_key,
+        "scheme_id": scheme_id,
+        "scheme": scheme,
+        "saved_at": payload.get("saved_at") or payload.get("created_at"),
+        "source": "frontend",
+    }
+
+    if not doc["saved_at"]:
+        from datetime import datetime
+        doc["saved_at"] = datetime.utcnow().isoformat()
+
+    await saved_schemes.create_index([("user_key", 1), ("scheme_id", 1)], unique=True)
+
+    result = await saved_schemes.update_one(
+        {"user_key": user_key, "scheme_id": scheme_id},
+        {"$set": doc},
+        upsert=True,
+    )
+
+    existing = await saved_schemes.find_one({"user_key": user_key, "scheme_id": scheme_id})
+    mongo_id = str(existing["_id"]) if existing and "_id" in existing else None
+
+    return {
+        "ok": True,
+        "message": "Scheme saved successfully",
+        "user_key": user_key,
+        "scheme_id": scheme_id,
+        "mongo_id": mongo_id,
+        "upserted": str(result.upserted_id) if result.upserted_id else None,
+    }
+
+
+@app.delete("/api/saved-db/{scheme_id}")
+async def delete_saved_scheme_db(request: Request, scheme_id: str):
+    saved_schemes = _get_collection("saved_schemes")
+    user_key = _get_user_key_from_request(request)
+
+    query = {
+        "user_key": {"$in": [user_key, "guest"]},
+        "$or": [
+            {"scheme_id": scheme_id},
+            {"scheme.id": scheme_id},
+            {"scheme._id": scheme_id},
+            {"scheme.mongo_id": scheme_id},
+            {"scheme.title": scheme_id},
+        ],
+    }
+
+    result = await saved_schemes.delete_many(query)
+
+    return {
+        "ok": True,
+        "message": "Scheme deleted successfully",
+        "deleted_count": result.deleted_count,
+    }
+
+
+@app.delete("/api/saved-db/mongo/{mongo_id}")
+async def delete_saved_scheme_by_mongo_id(request: Request, mongo_id: str):
+    saved_schemes = _get_collection("saved_schemes")
+    user_key = _get_user_key_from_request(request)
+
+    queries = [
+        {"user_key": {"$in": [user_key, "guest"]}, "mongo_id": mongo_id},
+        {"user_key": {"$in": [user_key, "guest"]}, "scheme.mongo_id": mongo_id},
+    ]
+
+    try:
+        queries.append({"user_key": {"$in": [user_key, "guest"]}, "_id": ObjectId(mongo_id)})
+    except Exception:
+        pass
+
+    deleted = 0
+    for q in queries:
+        result = await saved_schemes.delete_many(q)
+        deleted += result.deleted_count
+
+    return {
+        "ok": True,
+        "message": "Scheme deleted successfully",
+        "deleted_count": deleted,
+    }
+
+
+@app.get("/health")
+async def health():
+    return {"ok": True, "status": "running"}
+
+
+@app.get("/api/health")
+async def api_health():
+    return {"ok": True, "status": "running"}
+

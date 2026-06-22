@@ -26,3 +26,11 @@ __pycache__/
 # Secrets
 *.pem
 *.key
+
+# backend env
+backend/.env
+.env
+.venv
+backend/.venv
+__pycache__
+*.pyc
