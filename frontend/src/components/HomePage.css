@@ -6,17 +6,16 @@
   overflow-x: hidden;
 }
 
-/* ===== NAVBAR ===== */
 .ssNavbar {
-  height: 106px;
-  padding: 0 40px;
+  min-height: 106px;
+  padding: 18px 40px;
   display: grid;
-  grid-template-columns: 340px 1fr auto;
+  grid-template-columns: minmax(260px, 340px) 1fr auto;
   align-items: center;
   gap: 24px;
-  background: rgba(255,255,255,0.96);
+  background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid #e7edf5;
-  box-shadow: 0 14px 40px rgba(15,23,42,0.06);
+  box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -33,29 +32,24 @@
 .ssBrand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .ssLogoMark {
-  width: 58px;
+  width: 72px;
   height: 58px;
-  border-radius: 18px;
-  overflow: hidden;
-  background: linear-gradient(#ff9933 0 33%, #fff 33% 66%, #138808 66% 100%);
-  border: 1px solid rgba(15,23,42,.08);
-  box-shadow: 0 14px 30px rgba(15,23,42,.12);
-  position: relative;
+  border-radius: 0;
+  background: url("/images/sevasetu_official_logo.png") center center / contain no-repeat;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
 }
 
-.ssLogoMark span::after {
-  content: "☸";
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: #0b3b75;
-  font-size: 25px;
-  font-weight: 900;
+.ssLogoMark span,
+.ssLogoMark span::after,
+.ssLogoMark::after {
+  display: none;
+  content: none;
 }
 
 .ssBrand h2 {
@@ -75,7 +69,7 @@
 }
 
 .ssBrand p {
-  margin: 7px 0 0;
+  margin: 6px 0 0;
   color: #334155;
   font-size: 15px;
   font-weight: 750;
@@ -89,7 +83,7 @@
   padding: 8px;
   border: 1px solid #e2e8f0;
   border-radius: 999px;
-  background: rgba(248,250,252,.9);
+  background: rgba(248, 250, 252, 0.9);
 }
 
 .ssNavMenu button {
@@ -102,7 +96,8 @@
   font-size: 15px;
   font-weight: 850;
   cursor: pointer;
-  transition: .25s ease;
+  transition: 0.25s ease;
+  white-space: nowrap;
 }
 
 .ssNavMenu button:hover,
@@ -110,13 +105,14 @@
   background: #fff;
   color: #f97316;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(15,23,42,.10);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
 }
 
 .ssNavActions {
   display: flex;
   align-items: center;
   gap: 12px;
+  flex-wrap: nowrap;
 }
 
 .ssLang,
@@ -127,7 +123,7 @@
   border-radius: 16px;
   font-size: 15px;
   font-weight: 900;
-  transition: .25s ease;
+  transition: 0.25s ease;
 }
 
 .ssLang {
@@ -138,7 +134,7 @@
   gap: 8px;
   background: #fff;
   border: 1px solid #dbe5ef;
-  box-shadow: 0 10px 25px rgba(15,23,42,.06);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
 }
 
 .ssLang select {
@@ -152,7 +148,7 @@
 
 .ssLoginBtn {
   padding: 0 22px;
-  border: 1px solid rgba(249,115,22,.35);
+  border: 1px solid rgba(249, 115, 22, 0.35);
   background: #fff;
   color: #f97316;
   cursor: pointer;
@@ -164,7 +160,7 @@
   background: linear-gradient(135deg, #f97316, #15803d);
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 14px 30px rgba(249,115,22,.24);
+  box-shadow: 0 14px 30px rgba(249, 115, 22, 0.24);
   position: relative;
   overflow: hidden;
 }
@@ -176,14 +172,14 @@
   left: -120%;
   width: 70%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.45), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
   transform: skewX(-20deg);
-  transition: left .55s ease;
+  transition: left 0.55s ease;
 }
 
 .ssHelpBtn {
   padding: 0 18px;
-  border: 1px solid rgba(249,115,22,.28);
+  border: 1px solid rgba(249, 115, 22, 0.28);
   background: #fff;
   color: #f97316;
   display: inline-flex;
@@ -197,22 +193,21 @@
 .ssHelpBtn:hover,
 .ssLang:hover {
   transform: translateY(-3px);
-  box-shadow: 0 18px 36px rgba(15,23,42,.12);
+  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12);
 }
 
 .ssSignupBtn:hover::after {
   left: 130%;
 }
 
-/* ===== HERO ===== */
 .ssHero {
   min-height: calc(100vh - 148px);
   display: grid;
-  grid-template-columns: 58% 42%;
+  grid-template-columns: minmax(0, 58%) minmax(420px, 42%);
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,.10) 46%, rgba(255,255,255,.78) 70%, #fff 100%),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.1) 46%, rgba(255, 255, 255, 0.78) 70%, #fff 100%),
     url("/images/loginsignup.png") left center / contain no-repeat,
     linear-gradient(180deg, #eef8ff 0%, #ffffff 100%);
 }
@@ -222,105 +217,87 @@
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 18% 20%, rgba(255,153,51,.12), transparent 28%),
-    radial-gradient(circle at 82% 80%, rgba(19,136,8,.10), transparent 32%);
+    radial-gradient(circle at 18% 20%, rgba(255, 153, 51, 0.12), transparent 28%),
+    radial-gradient(circle at 82% 80%, rgba(19, 136, 8, 0.1), transparent 32%);
 }
 
 .ssHeroLeft {
   position: relative;
   z-index: 2;
-  padding: 62px 0 0 70px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 42px 24px 40px;
 }
 
 .ssHeroTextCard {
-  max-width: 500px;
-  padding: 28px 30px;
-  border-radius: 28px;
-  background: rgba(255,255,255,.90);
-  border: 1px solid rgba(226,232,240,.95);
-  box-shadow: 0 22px 60px rgba(15,23,42,.10);
+  width: min(540px, 100%);
+  margin-left: clamp(40px, 10vw, 230px);
+  margin-top: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  border-radius: 0;
 }
 
-.ssHeroTextCard h1 {
+.ssFinalHeroTitle,
+.ssFinalHeroTitle *,
+.ssHeroTextCard h1.ssFinalHeroTitle,
+.ssHeroTextCard h1.ssFinalHeroTitle span {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: initial;
+}
+
+.ssFinalHeroTitle {
   margin: 0;
-  color: #10294c;
-  font-size: clamp(42px, 4.4vw, 62px);
-  line-height: 1.05;
-  letter-spacing: -0.05em;
+  font-size: clamp(40px, 4.2vw, 60px);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
   font-weight: 950;
+  color: #10294c;
+  text-shadow: 0 2px 16px rgba(255, 255, 255, 0.55);
 }
 
-.ssHeroTextCard h1 span {
-  background: linear-gradient(90deg, #f97316 0 48%, #15803d 48% 100%);
-  -webkit-background-clip: text;
-  color: transparent;
+.ssFinalHeroTitle .ssTitleFirst {
+  color: #10294c;
 }
 
-.ssHeroTextCard p {
-  margin: 18px 0 0;
-  max-width: 430px;
-  color: #344256;
-  font-size: 18px;
-  line-height: 1.58;
-  font-weight: 600;
-}
-
-.ssServiceCards {
-  margin-top: 22px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.ssServiceCards article {
-  width: 84px;
-  height: 78px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.96);
-  border: 1px solid #e7edf5;
-  box-shadow: 0 10px 24px rgba(15,23,42,.08);
-  display: grid;
-  place-items: center;
-  text-align: center;
-  transition: .25s ease;
-}
-
-.ssServiceCards article:hover {
-  transform: translateY(-7px);
-  box-shadow: 0 20px 44px rgba(15,23,42,.12);
-}
-
-.ssServiceCards svg {
-  color: #0b67b2;
-}
-
-.ssServiceCards article:nth-child(2) svg,
-.ssServiceCards article:nth-child(3) svg {
+.ssFinalHeroTitle .ssEnriching {
   color: #f97316;
 }
 
-.ssServiceCards article:nth-child(4) svg,
-.ssServiceCards article:nth-child(5) svg {
+.ssFinalHeroTitle .ssLives {
   color: #15803d;
 }
 
-.ssServiceCards b {
-  color: #172033;
-  font-size: 12px;
+.ssHeroTextCard p {
+  margin: 20px 0 0;
+  max-width: 470px;
+  color: #26384f;
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 650;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.65);
 }
 
-/* ===== QUOTE CARD RIGHT SIDE ===== */
+.ssHeroLeft .ssServiceCards {
+  display: none;
+}
+
 .ssQuoteCard {
   position: relative;
   z-index: 3;
   align-self: center;
   justify-self: center;
-  width: min(560px, calc(100% - 70px));
+  width: min(620px, calc(100% - 56px));
   padding: 38px;
   border-radius: 30px;
-  background: rgba(255,255,255,.97);
+  background: rgba(255, 255, 255, 0.97);
   border: 1px solid #e8eef6;
-  box-shadow: 0 28px 80px rgba(15,23,42,.15);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.15);
 }
 
 .ssQuoteIcon {
@@ -331,7 +308,7 @@
   color: #fff;
   display: grid;
   place-items: center;
-  box-shadow: 0 18px 35px rgba(249,115,22,.22);
+  box-shadow: 0 18px 35px rgba(249, 115, 22, 0.22);
 }
 
 .ssQuoteBadge {
@@ -346,7 +323,7 @@
   color: #f97316;
   font-size: 12px;
   font-weight: 950;
-  letter-spacing: .08em;
+  letter-spacing: 0.08em;
 }
 
 .ssQuoteCard h2 {
@@ -391,7 +368,7 @@
   gap: 9px;
   font-weight: 900;
   cursor: pointer;
-  transition: .25s ease;
+  transition: 0.25s ease;
 }
 
 .ssQuoteBtns button.outline {
@@ -402,7 +379,7 @@
 
 .ssQuoteBtns button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 18px 34px rgba(15,23,42,.12);
+  box-shadow: 0 18px 34px rgba(15, 23, 42, 0.12);
 }
 
 .ssQuoteStats {
@@ -433,7 +410,92 @@
   font-weight: 700;
 }
 
-/* ===== FOOTER ===== */
+.ssPromiseServices {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid #e7edf5;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ssPromiseServices article {
+  min-height: 86px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+  border: 1px solid #e4edf7;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.ssPromiseServices article::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 153, 51, 0.14), rgba(19, 136, 8, 0.12));
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.ssPromiseServices article:hover {
+  transform: translateY(-8px) scale(1.035);
+  box-shadow: 0 20px 42px rgba(15, 23, 42, 0.12);
+  border-color: rgba(249, 115, 22, 0.28);
+}
+
+.ssPromiseServices article:hover::before {
+  opacity: 1;
+}
+
+.ssPromiseServices svg {
+  position: relative;
+  z-index: 1;
+  width: 24px;
+  height: 24px;
+  padding: 9px;
+  box-sizing: content-box;
+  border-radius: 15px;
+  color: #0b67b2;
+  background: rgba(11, 103, 178, 0.08);
+  transition: all 0.28s ease;
+}
+
+.ssPromiseServices article:nth-child(2) svg,
+.ssPromiseServices article:nth-child(3) svg {
+  color: #f97316;
+  background: rgba(249, 115, 22, 0.1);
+}
+
+.ssPromiseServices article:nth-child(4) svg,
+.ssPromiseServices article:nth-child(5) svg {
+  color: #15803d;
+  background: rgba(21, 128, 61, 0.1);
+}
+
+.ssPromiseServices article:hover svg {
+  background: linear-gradient(135deg, #f97316, #15803d);
+  color: #ffffff;
+  transform: rotate(-5deg) scale(1.12);
+  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.14);
+}
+
+.ssPromiseServices b {
+  position: relative;
+  z-index: 1;
+  color: #10294c;
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+}
+
 .ssFooter {
   min-height: 42px;
   padding: 12px 44px;
@@ -475,11 +537,10 @@
   color: #15803d;
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1200px) {
+@media (max-width: 1280px) {
   .ssNavbar {
-    height: auto;
     grid-template-columns: 1fr;
+    gap: 16px;
     padding: 22px;
   }
 
@@ -492,43 +553,113 @@
   .ssHero {
     grid-template-columns: 1fr;
     background:
-      linear-gradient(90deg, rgba(255,255,255,.80), rgba(255,255,255,.70)),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.72)),
       url("/images/loginsignup.png") left center / cover no-repeat;
   }
 
   .ssHeroLeft {
-    padding: 38px 28px 0;
-  }
-
-  .ssQuoteCard {
-    margin: 28px;
-    justify-self: start;
-  }
-}
-
-@media (max-width: 700px) {
-  .ssBrand h2 {
-    font-size: 28px;
+    justify-content: flex-start;
+    padding: 48px 28px 12px;
   }
 
   .ssHeroTextCard {
-    padding: 22px;
+    margin-left: 0;
+    margin-top: 0;
   }
 
-  .ssHeroTextCard h1 {
-    font-size: 36px;
+  .ssQuoteCard {
+    justify-self: start;
+    margin: 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .ssHero {
+    min-height: auto;
   }
 
   .ssQuoteCard {
     width: auto;
-    padding: 24px;
+    margin: 24px;
+    padding: 28px;
+  }
+
+  .ssPromiseServices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .ssQuoteStats {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 700px) {
+  .ssNavbar {
+    padding: 18px;
+  }
+
+  .ssBrand h2 {
+    font-size: 28px;
+  }
+
+  .ssLogoMark {
+    width: 64px;
+    height: 50px;
+  }
+
+  .ssNavMenu {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+
+  .ssNavActions {
+    width: 100%;
+  }
+
+  .ssLang,
+  .ssLoginBtn,
+  .ssSignupBtn,
+  .ssHelpBtn {
+    flex: 1 1 140px;
+  }
+
+  .ssHeroLeft {
+    padding: 42px 22px 8px;
+  }
+
+  .ssHeroTextCard {
+    width: 100%;
+  }
+
+  .ssFinalHeroTitle {
+    font-size: 34px;
+  }
+
+  .ssHeroTextCard p {
+    font-size: 16px;
+  }
+
+  .ssQuoteCard {
+    margin: 18px;
+    padding: 24px;
+    border-radius: 24px;
+  }
+
+  .ssQuoteCard h2 {
+    font-size: 28px;
+  }
+
+  .ssQuoteBig {
+    font-size: 18px;
+  }
+
+  .ssPromiseServices {
+    grid-template-columns: 1fr;
+  }
 
   .ssFooter {
+    padding: 14px 20px;
     flex-wrap: wrap;
     justify-content: flex-start;
   }
@@ -539,541 +670,289 @@
   }
 }
 
-/* ===== HERO TEXT NO CARD + SMALL CLEAN FONT ===== */
+@media (max-width: 420px) {
+  .ssQuoteBtns button {
+    width: 100%;
+    justify-content: center;
+  }
 
-/* Remove white card from hero text */
-.ssHeroTextCard {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  max-width: 560px !important;
+  .ssNavMenu button {
+    padding: 0 14px;
+  }
 }
 
-/* Hero text smaller and cleaner */
-.ssHeroTextCard h1 {
-  font-size: clamp(38px, 4vw, 58px) !important;
-  line-height: 1.08 !important;
-  letter-spacing: -0.045em !important;
-  text-shadow: 0 2px 16px rgba(255,255,255,.55) !important;
-}
-
-.ssHeroTextCard p {
-  font-size: 18px !important;
-  line-height: 1.55 !important;
-  max-width: 480px !important;
-  font-weight: 650 !important;
-  color: #26384f !important;
-  text-shadow: 0 2px 12px rgba(255,255,255,.65) !important;
-}
-
-/* Service icons without card box */
-.ssServiceCards {
-  margin-top: 24px !important;
-  display: flex !important;
-  gap: 26px !important;
-  flex-wrap: wrap !important;
-}
-
-.ssServiceCards article {
-  width: auto !important;
+/* ===== FORCE SCROLL AND FEATURE CARDS SECTION ===== */
+html,
+body,
+#root {
+  min-height: 100% !important;
   height: auto !important;
-  min-width: auto !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  gap: 7px !important;
-  padding: 0 !important;
-  cursor: default !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
 }
 
-.ssServiceCards article:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: none !important;
+body {
+  margin: 0 !important;
 }
 
-.ssServiceCards svg {
-  width: 30px !important;
-  height: 30px !important;
-  padding: 8px !important;
-  box-sizing: content-box !important;
-  border-radius: 14px !important;
-  background: rgba(255,255,255,.86) !important;
-  border: 1px solid rgba(226,232,240,.9) !important;
-  box-shadow: 0 10px 24px rgba(15,23,42,.08) !important;
+.ssLanding {
+  min-height: 100vh !important;
+  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: visible !important;
 }
 
-.ssServiceCards b {
-  font-size: 13px !important;
-  font-weight: 850 !important;
-  color: #10294c !important;
-  text-shadow: 0 2px 10px rgba(255,255,255,.8) !important;
+.ssHero {
+  min-height: calc(100vh - 106px) !important;
+  height: auto !important;
+  overflow: visible !important;
 }
 
-/* Keep left area properly arranged */
-.ssHeroLeft {
-  padding-top: 74px !important;
-  padding-left: 78px !important;
-}
-
-/* On mobile, keep readable */
-@media (max-width: 700px) {
-  .ssHeroTextCard h1 {
-    font-size: 34px !important;
-  }
-
-  .ssServiceCards {
-    gap: 16px !important;
-  }
-
-  .ssHeroLeft {
-    padding-left: 22px !important;
-    padding-right: 22px !important;
-  }
-}
-
-/* ===== MOVE SERVICE ITEMS BELOW CITIZEN PROMISE CARD ===== */
-
-/* Hide old left service cards if any duplicate remains */
-.ssHeroLeft .ssServiceCards {
-  display: none !important;
-}
-
-/* New service cards under quote card */
-.ssPromiseServices {
-  margin-top: 26px !important;
-  padding-top: 22px !important;
-  border-top: 1px solid #e7edf5 !important;
-  display: grid !important;
-  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
-  gap: 12px !important;
-}
-
-.ssPromiseServices article {
-  min-height: 86px !important;
-  border-radius: 18px !important;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%) !important;
-  border: 1px solid #e4edf7 !important;
-  box-shadow: 0 10px 24px rgba(15,23,42,.06) !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 8px !important;
-  cursor: default !important;
+.ssFeatureSection {
+  display: block !important;
   position: relative !important;
-  overflow: hidden !important;
-  transition:
-    transform .28s ease,
-    box-shadow .28s ease,
-    border-color .28s ease,
-    background .28s ease !important;
+  z-index: 20 !important;
+  padding: 72px 56px 82px !important;
+  background:
+    radial-gradient(circle at 12% 16%, rgba(249, 115, 22, 0.09), transparent 28%),
+    radial-gradient(circle at 88% 82%, rgba(21, 128, 61, 0.09), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #f8fbff 100%) !important;
+  border-top: 1px solid #edf2f7 !important;
 }
 
-.ssPromiseServices article::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background: linear-gradient(135deg, rgba(255,153,51,.14), rgba(19,136,8,.12)) !important;
-  opacity: 0 !important;
-  transition: opacity .28s ease !important;
-}
-
-.ssPromiseServices article:hover {
-  transform: translateY(-8px) scale(1.035) !important;
-  box-shadow: 0 20px 42px rgba(15,23,42,.12) !important;
-  border-color: rgba(249,115,22,.28) !important;
-}
-
-.ssPromiseServices article:hover::before {
-  opacity: 1 !important;
-}
-
-.ssPromiseServices svg {
-  position: relative !important;
-  z-index: 1 !important;
-  width: 24px !important;
-  height: 24px !important;
-  padding: 9px !important;
-  box-sizing: content-box !important;
-  border-radius: 15px !important;
-  color: #0b67b2 !important;
-  background: rgba(11,103,178,.08) !important;
-  transition: all .28s ease !important;
-}
-
-.ssPromiseServices article:nth-child(2) svg,
-.ssPromiseServices article:nth-child(3) svg {
-  color: #f97316 !important;
-  background: rgba(249,115,22,.10) !important;
-}
-
-.ssPromiseServices article:nth-child(4) svg,
-.ssPromiseServices article:nth-child(5) svg {
-  color: #15803d !important;
-  background: rgba(21,128,61,.10) !important;
-}
-
-.ssPromiseServices article:hover svg {
-  background: linear-gradient(135deg, #f97316, #15803d) !important;
-  color: #ffffff !important;
-  transform: rotate(-5deg) scale(1.12) !important;
-  box-shadow: 0 14px 28px rgba(15,23,42,.14) !important;
-}
-
-.ssPromiseServices b {
-  position: relative !important;
-  z-index: 1 !important;
-  color: #10294c !important;
-  font-size: 12px !important;
-  font-weight: 900 !important;
+.ssFeatureHead {
+  max-width: 760px !important;
+  margin: 0 auto 34px !important;
   text-align: center !important;
 }
 
-/* Quote card a little wider so 5 items fit nicely */
-.ssQuoteCard {
-  width: min(620px, calc(100% - 70px)) !important;
+.ssFeatureHead span {
+  display: inline-flex !important;
+  padding: 10px 16px !important;
+  border-radius: 999px !important;
+  background: #fff7ed !important;
+  color: #f97316 !important;
+  border: 1px solid rgba(249, 115, 22, 0.24) !important;
+  font-size: 13px !important;
+  font-weight: 950 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
 }
 
-/* Mobile responsive */
-@media (max-width: 900px) {
-  .ssPromiseServices {
+.ssFeatureHead h2 {
+  margin: 18px 0 10px !important;
+  color: #10294c !important;
+  font-size: clamp(30px, 3.2vw, 46px) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -0.045em !important;
+  font-weight: 950 !important;
+}
+
+.ssFeatureHead p {
+  margin: 0 auto !important;
+  max-width: 620px !important;
+  color: #5e6f87 !important;
+  font-size: 17px !important;
+  line-height: 1.65 !important;
+  font-weight: 650 !important;
+}
+
+.ssFeatureGrid {
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+}
+
+.ssFeatureCard {
+  min-height: 225px !important;
+  padding: 24px 18px !important;
+  border-radius: 26px !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  border: 1px solid #e4edf7 !important;
+  box-shadow: 0 18px 46px rgba(15, 23, 42, 0.08) !important;
+  text-align: center !important;
+  cursor: default !important;
+  position: relative !important;
+  overflow: hidden !important;
+  animation: ssFeatureCardFloat 3.5s ease-in-out infinite !important;
+  animation-delay: var(--cardDelay) !important;
+  transition: box-shadow 0.32s ease, border-color 0.32s ease, scale 0.32s ease !important;
+}
+
+.ssFeatureCard::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.14), rgba(21, 128, 61, 0.12)) !important;
+  opacity: 0 !important;
+  transition: opacity 0.32s ease !important;
+}
+
+.ssFeatureCard:hover {
+  scale: 1.035 !important;
+  border-color: rgba(249, 115, 22, 0.34) !important;
+  box-shadow: 0 28px 70px rgba(15, 23, 42, 0.14) !important;
+}
+
+.ssFeatureCard:hover::before {
+  opacity: 1 !important;
+}
+
+.ssFeatureIcon {
+  width: 64px !important;
+  height: 64px !important;
+  margin: 0 auto 16px !important;
+  border-radius: 22px !important;
+  display: grid !important;
+  place-items: center !important;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #f97316, #15803d) !important;
+  box-shadow: 0 18px 34px rgba(249, 115, 22, 0.22) !important;
+  position: relative !important;
+  z-index: 1 !important;
+  transition: transform 0.32s ease !important;
+}
+
+.ssFeatureCard:hover .ssFeatureIcon {
+  transform: rotate(-6deg) scale(1.1) !important;
+}
+
+.ssFeatureCard h3 {
+  margin: 0 !important;
+  color: #10294c !important;
+  font-size: 18px !important;
+  font-weight: 950 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.ssFeatureCard p {
+  margin: 12px 0 0 !important;
+  color: #61738c !important;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+  font-weight: 650 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+@keyframes ssFeatureCardFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .ssFeatureGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .ssFeatureSection {
+    padding: 54px 22px 64px !important;
+  }
+
+  .ssFeatureGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .ssFeatureCard {
+    min-height: 210px !important;
   }
 }
 
 @media (max-width: 520px) {
-  .ssPromiseServices {
+  .ssFeatureGrid {
     grid-template-columns: 1fr !important;
   }
-}
 
-/* ===== SHIFT HERO TEXT LEFT + DOWN ===== */
-.ssHeroLeft {
-  padding-left: 44px !important;
-  padding-top: 105px !important;
-}
-
-.ssHeroTextCard {
-  margin-left: 0 !important;
-  transform: translate(-18px, 24px) !important;
-}
-
-/* keep mobile normal */
-@media (max-width: 900px) {
-  .ssHeroLeft {
-    padding-left: 22px !important;
-    padding-top: 46px !important;
-  }
-
-  .ssHeroTextCard {
-    transform: none !important;
-  }
-}
-
-/* ===== SHIFT HERO TEXT: LITTLE RIGHT + MIDDLE + DOWN ===== */
-.ssHeroLeft {
-  padding-left: 105px !important;
-  padding-top: 105px !important;
-  align-items: center !important;
-}
-
-.ssHeroTextCard {
-  margin-left: 22px !important;
-  margin-top: 28px !important;
-  max-width: 540px !important;
-}
-
-.ssHeroTextCard h1 {
-  font-size: clamp(38px, 4vw, 56px) !important;
-}
-
-.ssHeroTextCard p {
-  max-width: 460px !important;
-}
-
-/* responsive safe */
-@media (max-width: 1200px) {
-  .ssHeroLeft {
-    padding-left: 38px !important;
-    padding-top: 60px !important;
-  }
-
-  .ssHeroTextCard {
-    margin-left: 0 !important;
-    margin-top: 0 !important;
+  .ssFeatureCard {
+    min-height: auto !important;
   }
 }
 
 
-/* ===== MOVE HERO TEXT SLIGHTLY MIDDLE + DOWN ===== */
-.ssHeroLeft {
-  padding-top: 118px !important;
-  padding-left: 110px !important;
+/* ===== FINAL TWEAK: DARK FOOTER + BIGGER FEATURE CARDS ===== */
+.ssFooter {
+  background: linear-gradient(135deg, #0f1f3a 0%, #10294c 55%, #0f3d2a 100%) !important;
+  color: #eaf2ff !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 -18px 45px rgba(15, 23, 42, 0.18) !important;
 }
 
-.ssHeroTextCard {
-  max-width: 540px !important;
+.ssFooter button {
+  color: #eaf2ff !important;
+  font-weight: 700 !important;
 }
 
-.ssHeroTextCard h1 {
-  font-size: clamp(40px, 4.2vw, 60px) !important;
-  line-height: 1.08 !important;
+.ssFooter button:hover {
+  color: #ffb36b !important;
 }
 
-.ssHeroTextCard p {
-  margin-top: 20px !important;
-  max-width: 470px !important;
+.ssFooter span {
+  background: rgba(255, 255, 255, 0.28) !important;
 }
 
-/* responsive safe */
-@media (max-width: 1200px) {
-  .ssHeroLeft {
-    padding-top: 70px !important;
-    padding-left: 32px !important;
-  }
+.ssFooter p {
+  color: #dbeafe !important;
+  font-weight: 700 !important;
 }
 
-@media (max-width: 700px) {
-  .ssHeroLeft {
-    padding-top: 42px !important;
-    padding-left: 22px !important;
-    padding-right: 22px !important;
-  }
+.ssFooter p b {
+  color: #ff9933 !important;
 }
 
-/* ===== FORCE HERO TEXT SHIFT: MIDDLE + DOWN ===== */
-.ssHero .ssHeroLeft,
-.authHeroArea .leftHero,
-.leftHero {
-  padding-top: 0 !important;
-  padding-left: 0 !important;
-  display: flex !important;
-  align-items: flex-start !important;
-  justify-content: flex-start !important;
+.ssFooter p strong {
+  color: #7ee28b !important;
 }
 
-/* actual text box ko force move karo */
-.ssHero .ssHeroTextCard,
-.ssHeroTextCard,
-.heroCopy,
-.cleanHeroCopy {
-  transform: translate(120px, 95px) !important;
-  margin: 0 !important;
+.ssFeatureGrid {
+  max-width: 1260px !important;
+  gap: 22px !important;
 }
 
-/* text thoda compact */
-.ssHeroTextCard h1,
-.heroCopy h1,
-.cleanHeroCopy h1 {
-  font-size: clamp(38px, 4vw, 56px) !important;
-  line-height: 1.08 !important;
+.ssFeatureCard {
+  min-height: 260px !important;
+  padding: 30px 22px !important;
+  border-radius: 30px !important;
 }
 
-.ssHeroTextCard p,
-.heroCopy p,
-.cleanHeroCopy p {
-  font-size: 17px !important;
-  max-width: 460px !important;
+.ssFeatureIcon {
+  width: 74px !important;
+  height: 74px !important;
+  border-radius: 25px !important;
+  margin-bottom: 20px !important;
 }
 
-/* mobile pe normal rakho */
-@media (max-width: 900px) {
-  .ssHero .ssHeroTextCard,
-  .ssHeroTextCard,
-  .heroCopy,
-  .cleanHeroCopy {
-    transform: translate(20px, 35px) !important;
-  }
+.ssFeatureIcon svg {
+  width: 32px !important;
+  height: 32px !important;
 }
 
-/* ===== FINAL HERO TEXT POSITION: UP + MIDDLE ===== */
-.ssHero .ssHeroTextCard,
-.ssHeroTextCard,
-.heroCopy,
-.cleanHeroCopy {
-  transform: translate(210px, 42px) !important;
-  margin: 0 !important;
+.ssFeatureCard h3 {
+  font-size: 20px !important;
 }
 
-/* keep hero area stable */
-.ssHero .ssHeroLeft,
-.ssHeroLeft,
-.leftHero {
-  padding-top: 0 !important;
-  padding-left: 0 !important;
-}
-
-/* mobile safe */
-@media (max-width: 900px) {
-  .ssHero .ssHeroTextCard,
-  .ssHeroTextCard,
-  .heroCopy,
-  .cleanHeroCopy {
-    transform: translate(20px, 25px) !important;
-  }
-}
-
-/* ===== HERO TEXT LITTLE MORE RIGHT ===== */
-.ssHeroTextCard,
-.heroCopy,
-.cleanHeroCopy {
-  transform: translate(245px, 42px) !important;
-}
-
-@media (max-width: 900px) {
-  .ssHeroTextCard,
-  .heroCopy,
-  .cleanHeroCopy {
-    transform: translate(20px, 25px) !important;
-  }
-}
-
-/* ===== FINAL: MORE RIGHT SHIFT + ENRICHING ORANGE, LIVES GREEN ===== */
-
-/* Thoda aur right shift */
-.ssHeroTextCard,
-.heroCopy,
-.cleanHeroCopy {
-  transform: translate(285px, 42px) !important;
-}
-
-/* Remove old gradient from second line */
-.ssHeroTextCard h1 .ssTitleLine2,
-.ssHeroTextCard h1 .ssTitleLine2 span {
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  color: inherit !important;
-}
-
-.ssHeroTextCard h1 .ssOrangeWord {
-  color: #f97316 !important;
-}
-
-.ssHeroTextCard h1 .ssGreenWord {
-  color: #15803d !important;
-}
-
-/* Mobile safe */
-@media (max-width: 900px) {
-  .ssHeroTextCard,
-  .heroCopy,
-  .cleanHeroCopy {
-    transform: translate(20px, 25px) !important;
-  }
-}
-
-/* ===== FINAL FORCE: HERO MORE RIGHT + CORRECT ORANGE/GREEN COLORS ===== */
-
-/* Force hero text more right */
-.ssHero .ssHeroTextCard,
-.ssHeroTextCard,
-.heroCopy,
-.cleanHeroCopy {
-  transform: translate(340px, 42px) !important;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  padding: 0 !important;
-}
-
-/* Force all old gradient/color rules OFF only for final title */
-.ssFinalHeroTitle,
-.ssFinalHeroTitle *,
-.ssHeroTextCard h1.ssFinalHeroTitle,
-.ssHeroTextCard h1.ssFinalHeroTitle span {
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  text-fill-color: initial !important;
-  -webkit-text-fill-color: initial !important;
-}
-
-/* First line navy */
-.ssFinalHeroTitle .ssTitleFirst {
-  color: #10294c !important;
-}
-
-/* Enriching orange */
-.ssFinalHeroTitle .ssEnriching {
-  color: #f97316 !important;
-}
-
-/* Lives green */
-.ssFinalHeroTitle .ssLives {
-  color: #15803d !important;
-}
-
-/* Font size perfect */
-.ssFinalHeroTitle {
-  font-size: clamp(40px, 4.2vw, 60px) !important;
-  line-height: 1.08 !important;
-  letter-spacing: -0.045em !important;
-  font-weight: 950 !important;
-  margin: 0 !important;
-}
-
-/* Subtitle proper */
-.ssHeroTextCard p {
-  font-size: 17px !important;
-  max-width: 460px !important;
-  color: #26384f !important;
-  font-weight: 650 !important;
-}
-
-/* Mobile safe */
-@media (max-width: 900px) {
-  .ssHero .ssHeroTextCard,
-  .ssHeroTextCard,
-  .heroCopy,
-  .cleanHeroCopy {
-    transform: translate(20px, 25px) !important;
-  }
-}
-
-/* ===== FINAL OFFICIAL LOGO IMAGE ===== */
-.ssLogoMark {
-  width: 72px !important;
-  height: 58px !important;
-  border-radius: 0 !important;
-  background: url("/images/sevasetu_official_logo.png") center center / contain no-repeat !important;
-  border: none !important;
-  box-shadow: none !important;
-  overflow: visible !important;
-}
-
-.ssLogoMark span,
-.ssLogoMark span::after,
-.ssLogoMark::after {
-  display: none !important;
-  content: none !important;
-}
-
-.ssBrand {
-  gap: 12px !important;
-}
-
-.ssBrand h2 {
-  font-size: 34px !important;
-}
-
-.ssBrand p {
+.ssFeatureCard p {
   font-size: 15px !important;
-  margin-top: 6px !important;
+  line-height: 1.62 !important;
 }
 
-@media (max-width: 700px) {
-  .ssLogoMark {
-    width: 64px !important;
-    height: 50px !important;
+@media (max-width: 800px) {
+  .ssFeatureCard {
+    min-height: 235px !important;
+    padding: 26px 20px !important;
   }
+}
 
-  .ssBrand h2 {
-    font-size: 28px !important;
+@media (max-width: 520px) {
+  .ssFeatureCard {
+    min-height: auto !important;
   }
 }

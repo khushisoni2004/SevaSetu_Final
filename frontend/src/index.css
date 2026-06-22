@@ -257,3 +257,32 @@
 .sidebarNav {
   margin-top: 0 !important;
 }
+
+
+/* GLOBAL FORCE PAGE SCROLL */
+html,
+body,
+#root {
+  min-height: 100% !important;
+  height: auto !important;
+  overflow-y: auto !important;
+}
+
+
+/* SEVASETU GLOBAL LANGUAGE SUPPORT */
+html[dir="rtl"] body {
+  direction: rtl;
+}
+
+html[dir="rtl"] .ssBrand,
+html[dir="rtl"] .ssNavActions,
+html[dir="rtl"] .schemeActions,
+html[dir="rtl"] .schemeSearchPanel,
+html[dir="rtl"] .ssQuoteBtns {
+  direction: rtl;
+}
+
+html[dir="rtl"] input,
+html[dir="rtl"] textarea {
+  text-align: right;
+}

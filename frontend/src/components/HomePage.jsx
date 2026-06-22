@@ -8,12 +8,10 @@ import {
   HandHeart,
   HeartPulse,
   HelpCircle,
-  Home as HomeIcon,
   Languages,
   Leaf,
   ShieldCheck,
   Sparkles,
-  Users,
 } from "lucide-react";
 import { go } from "../App.jsx";
 
@@ -29,18 +27,15 @@ const TEXT = {
     signup: "Sign Up",
     title1: "Empowering India,",
     title2: "Enriching Lives",
-    subtitle:
-      "Access Schemes and services easily, securely & from anywhere.",
+    subtitle: "Access Schemes and services easily, securely & from anywhere.",
     education: "Education",
     health: "Health",
     jobs: "Jobs",
     agriculture: "Agriculture",
     support: "Support",
     quoteTitle: "SevaSetu Citizen Promise",
-    quote:
-      "Every citizen deserves simple, clear and trusted access to government support.",
-    quoteText:
-      "Search schemes, prepare documents and continue safely through official portals.",
+    quote: "Every citizen deserves simple, clear and trusted access to government support.",
+    quoteText: "Search schemes, prepare documents and continue safely through official portals.",
     start: "Create Account",
     explore: "Explore Schemes",
     schemeCount: "3,406+",
@@ -61,18 +56,15 @@ const TEXT = {
     signup: "साइन अप",
     title1: "भारत को सशक्त बनाना,",
     title2: "जीवन को समृद्ध बनाना",
-    subtitle:
-      "सरकारी योजनाओं और सेवाओं तक आसान, सुरक्षित और कहीं से भी पहुँच पाएँ।",
+    subtitle: "सरकारी योजनाओं और सेवाओं तक आसान, सुरक्षित और कहीं से भी पहुँच पाएँ।",
     education: "शिक्षा",
     health: "स्वास्थ्य",
     jobs: "रोजगार",
     agriculture: "कृषि",
     support: "सहायता",
     quoteTitle: "SevaSetu नागरिक वादा",
-    quote:
-      "हर नागरिक को सरकारी सहायता तक सरल, स्पष्ट और भरोसेमंद पहुँच मिलनी चाहिए।",
-    quoteText:
-      "योजनाएँ खोजें, दस्तावेज़ तैयार करें और आधिकारिक पोर्टल पर सुरक्षित रूप से आगे बढ़ें।",
+    quote: "हर नागरिक को सरकारी सहायता तक सरल, स्पष्ट और भरोसेमंद पहुँच मिलनी चाहिए।",
+    quoteText: "योजनाएँ खोजें, दस्तावेज़ तैयार करें और आधिकारिक पोर्टल पर सुरक्षित रूप से आगे बढ़ें।",
     start: "अकाउंट बनाएँ",
     explore: "योजनाएँ देखें",
     schemeCount: "3,406+",
@@ -145,10 +137,25 @@ export default function HomePage({ language = "en", setLanguage }) {
               onChange={(e) => {
                 setLanguage?.(e.target.value);
                 localStorage.setItem("sevasetu_language", e.target.value);
+                localStorage.removeItem("sevasetu_language");
+  window.dispatchEvent(new Event("sevasetu-language-change"));
               }}
             >
               <option value="en">English</option>
               <option value="hi">हिन्दी</option>
+              <option value="mr">मराठी</option>
+              <option value="gu">ગુજરાતી</option>
+              <option value="bn">বাংলা</option>
+              <option value="ta">தமிழ்</option>
+              <option value="te">తెలుగు</option>
+              <option value="kn">ಕನ್ನಡ</option>
+              <option value="ml">മലയാളം</option>
+              <option value="pa">ਪੰਜਾਬੀ</option>
+              <option value="ur">اردو</option>
+              <option value="or">ଓଡ଼ିଆ</option>
+              <option value="as">অসমীয়া</option>
+              <option value="ne">नेपाली</option>
+              <option value="sa">संस्कृत</option>
             </select>
           </label>
 
@@ -175,7 +182,7 @@ export default function HomePage({ language = "en", setLanguage }) {
             <h1 className="ssFinalHeroTitle">
               <span className="ssTitleFirst">{text.title1}</span>
               <br />
-              {language === "en" ? (
+              {language !== "hi" ? (
                 <span className="ssTitleSecond">
                   <span className="ssEnriching">Enriching</span>{" "}
                   <span className="ssLives">Lives</span>
@@ -184,7 +191,6 @@ export default function HomePage({ language = "en", setLanguage }) {
                 <span className="ssTitleSecond ssLives">{text.title2}</span>
               )}
             </h1>
-
             <p>{text.subtitle}</p>
           </div>
         </div>
@@ -241,6 +247,38 @@ export default function HomePage({ language = "en", setLanguage }) {
             ))}
           </div>
         </aside>
+      </section>
+
+      <section className="ssFeatureSection">
+        <div className="ssFeatureHead">
+          <span>SevaSetu Features</span>
+          <h2>Citizen services made simple</h2>
+          <p>Smart non-clickable feature cards to guide citizens through schemes, services and support.</p>
+        </div>
+
+        <div className="ssFeatureGrid">
+          {cards.map(([label, Icon], index) => (
+            <article
+              className="ssFeatureCard"
+              key={label}
+              style={{ "--cardDelay": `${index * 0.15}s` }}
+            >
+              <div className="ssFeatureIcon">
+                <Icon size={28} />
+              </div>
+
+              <h3>{label}</h3>
+
+              <p>
+                {label === text.education && "Find student schemes, scholarships and education benefits."}
+                {label === text.health && "Explore health support, medical aid and welfare schemes."}
+                {label === text.jobs && "Discover employment, skill and career support services."}
+                {label === text.agriculture && "Access farmer subsidies, rural benefits and agriculture schemes."}
+                {label === text.support && "Get help with documents, eligibility and application guidance."}
+              </p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <footer className="ssFooter">

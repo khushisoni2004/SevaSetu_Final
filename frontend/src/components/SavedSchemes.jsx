@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./SchemesPage.css";
 import {
   ArrowRight,
@@ -12,26 +12,113 @@ import {
 import { go } from "../App.jsx";
 import { api } from "../api";
 
+function getLoggedUserKey() {
+  const keys = [
+    "sevasetu_user",
+    "sevasetu_auth_user",
+    "auth_user",
+    "user",
+    "current_user",
+  ];
+
+  for (const key of keys) {
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) continue;
+      const user = JSON.parse(raw);
+      const id =
+        user?.email ||
+        user?.user?.email ||
+        user?.id ||
+        user?._id ||
+        user?.user_id ||
+        user?.name;
+
+      if (id) return String(id).toLowerCase().trim();
+    } catch {
+      const raw = localStorage.getItem(key);
+      if (raw && raw.includes("@")) return raw.toLowerCase().trim();
+    }
+  }
+
+  return "guest";
+}
+
+function savedKey() {
+  return `sevasetu_saved_schemes_${getLoggedUserKey()}`;
+}
+
+function normalizeSaved(x) {
+  const base = x?.scheme ? x.scheme : x;
+  return {
+    ...base,
+    id: base?.id || x?.id || x?.scheme_id || x?.mongo_id || base?._id,
+    mongo_id: x?.mongo_id || base?.mongo_id || base?._id,
+    saved_at: x?.saved_at || base?.saved_at || new Date().toISOString(),
+  };
+}
+
+function uniqueSchemes(list) {
+  const map = new Map();
+
+  for (const item of list || []) {
+    const s = normalizeSaved(item);
+    const key = String(s.id || s.mongo_id || s.title || Math.random());
+    map.set(key, s);
+  }
+
+  return [...map.values()];
+}
+
 export default function SavedSchemes({ text = {} }) {
   const [items, setItems] = useState([]);
   const [q, setQ] = useState("");
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState("");
 
+  const cacheKey = useMemo(() => savedKey(), []);
+
+  function saveLocal(next) {
+    const clean = uniqueSchemes(next);
+    localStorage.setItem(cacheKey, JSON.stringify(clean));
+    localStorage.setItem("sevasetu_saved_schemes", JSON.stringify(clean));
+    return clean;
+  }
+
+  function loadLocal() {
+    try {
+      const userSaved = JSON.parse(localStorage.getItem(cacheKey) || "[]");
+      if (userSaved.length) return uniqueSchemes(userSaved);
+
+      const oldSaved = JSON.parse(localStorage.getItem("sevasetu_saved_schemes") || "[]");
+      return uniqueSchemes(oldSaved);
+    } catch {
+      return [];
+    }
+  }
+
   async function loadSaved() {
     try {
       setLoading(true);
+
+      const localSaved = loadLocal();
+      if (localSaved.length) {
+        setItems(localSaved);
+      }
+
       const res = await api("/api/saved-db");
-      const schemes = (res.items || []).map((x) => ({
-        ...(x.scheme || {}),
-        mongo_id: x.mongo_id,
-        saved_at: x.saved_at,
-      }));
-      setItems(schemes);
-      localStorage.setItem("sevasetu_saved_schemes", JSON.stringify(schemes));
+      const schemes = uniqueSchemes(res.items || []);
+
+      if (schemes.length) {
+        const merged = saveLocal([...localSaved, ...schemes]);
+        setItems(merged);
+      } else {
+        const fallback = loadLocal();
+        setItems(fallback);
+      }
     } catch {
-      const old = JSON.parse(localStorage.getItem("sevasetu_saved_schemes") || "[]");
-      setItems(old);
+      const fallback = loadLocal();
+      setItems(fallback);
     } finally {
       setLoading(false);
     }
@@ -52,9 +139,10 @@ export default function SavedSchemes({ text = {} }) {
     const ok = confirm(`Delete "${s.title}" from saved schemes?`);
     if (!ok) return;
 
-    try {
-      setDeletingId(s.id);
+    const deleteKey = String(s.id || s.mongo_id || s.title);
+    setDeletingId(deleteKey);
 
+    try {
       if (s.id) {
         await api(`/api/saved-db/${encodeURIComponent(s.id)}`, {
           method: "DELETE",
@@ -64,18 +152,17 @@ export default function SavedSchemes({ text = {} }) {
           method: "DELETE",
         });
       }
-
-      const next = items.filter((x) => x.id !== s.id);
-      setItems(next);
-      localStorage.setItem("sevasetu_saved_schemes", JSON.stringify(next));
-      alert("Scheme deleted successfully");
     } catch {
-      const next = items.filter((x) => x.id !== s.id);
-      setItems(next);
-      localStorage.setItem("sevasetu_saved_schemes", JSON.stringify(next));
-      alert("Deleted locally. Backend sync may need restart.");
+      console.warn("Backend delete failed, deleting local copy only.");
     } finally {
+      const next = items.filter((x) => {
+        const xKey = String(x.id || x.mongo_id || x.title);
+        return xKey !== deleteKey;
+      });
+
+      setItems(saveLocal(next));
       setDeletingId("");
+      alert("Scheme deleted successfully");
     }
   }
 
@@ -125,7 +212,7 @@ export default function SavedSchemes({ text = {} }) {
       ) : (
         <section className="schemesGridPro">
           {filtered.map((s) => (
-            <article className="schemeCardPro savedCardPro" key={s.id || s.mongo_id}>
+            <article className="schemeCardPro savedCardPro" key={s.id || s.mongo_id || s.title}>
               <div className="schemeCardTop">
                 <span>
                   <Landmark size={23} />
@@ -150,13 +237,13 @@ export default function SavedSchemes({ text = {} }) {
                   onClick={() => deleteSaved(s)}
                 >
                   <Trash2 size={17} />
-                  {deletingId === s.id ? "Deleting..." : "Delete"}
+                  {deletingId === String(s.id || s.mongo_id || s.title) ? "Deleting..." : "Delete"}
                 </button>
 
                 <button
                   type="button"
                   className="viewBtn"
-                  onClick={() => go(`/app/schemes/${encodeURIComponent(s.id)}`)}
+                  onClick={() => go(`/app/schemes/${encodeURIComponent(s.id || s.mongo_id || s.title)}`)}
                 >
                   View
                   <ArrowRight size={17} />
